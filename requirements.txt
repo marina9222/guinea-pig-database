@@ -2,3 +2,4 @@ Flask==2.0.3
 pymongo==4.1.1
 dnspython==2.2.1
 cloudinary==1.28.1
+werkzeug==2.0.3
