@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+{% block content %}
+
+    <h2>I am extending</h2>
+  
+    {% for pet in pets %}
+       {{pet.pet_breed}}<br>
+       {{pet.pet_name}}<br>
+       {{pet.pet_age}}<br>
+       {{pet.pet_character}}<br>
+       {{pet.pet_image}}<br>
+    {% endfor %}
+
+{% endblock %}
