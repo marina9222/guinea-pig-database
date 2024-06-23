@@ -1,5 +1,32 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.brand-logo {
+    font-size: 1.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
+nav ul li a {
+    padding: 0 15px;
+}    
+
+
+
+
+
+/* Media queries */
+
+
+@media (max-width: 992px) {
+    .brand-logo {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .brand-logo {
+        font-size: 1rem;
+        padding-left: 10px;
+    }
+}
+
+

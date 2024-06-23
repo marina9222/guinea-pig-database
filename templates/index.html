@@ -1,29 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
-          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.1.0/dist/css/materialize.min.css" type="text/css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
-    {% block styles %}
-    {% endblock %}
-    <title>Piggy Profiles & Pics Hub</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.1.0/dist/css/materialize.min.css"
+    type="text/css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css" />
+  {% block styles %} {% endblock %}
+  <title>Piggy Profiles & Pics Hub</title>
 </head>
+
 <body>
-    <h1>Base template</h1>
-    {% block content %}
-    {% endblock %}
+  <header>
+    <!-- top navbar-->
 
+    <nav>
+      <div class="nav-wrapper light-blue lighten-5">
+        <a href="{{ url_for('get_pets') }}" class="brand-logo indigo-text">Piggy Profiles & Pics Hub</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger right indigo-text"><i class="fas fa-bars"></i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="{{ url_for('get_pets') }}" class="indigo-text">Home</a></li>
+          <li><a href="#" class="indigo-text">Profile</a></li>
+          <li><a href="#" class="indigo-text">Add Pet</a></li>
+          <li><a href="#" class="indigo-text">Log Out</a></li>
+          <li><a href="#" class="indigo-text">Log In</a></li>
+          <li><a href="#" class="indigo-text">Register</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!--mobile side navbar -->
+    <ul class="sidenav" id="mobile-demo">
+      <li><h4 class="center-align indigo-text">Piggy Profiles & Pics Hub</h4></li>
+      <li><a href="{{ url_for('get_pets') }}" class="indigo-text">Home</a></li>
+          <li><a href="#" class="indigo-text">Profile</a></li>
+          <li><a href="#" class="indigo-text">Add Pet</a></li>
+          <li><a href="#" class="indigo-text">Log Out</a></li>
+          <li><a href="#" class="indigo-text">Log In</a></li>
+          <li><a href="#" class="indigo-text">Register</a></li>
+    </ul>
+  </header>
+  {% block content %} {% endblock %}
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-        crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.1.0/dist/js/materialize.min.js"></script> 
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
-{% block scripts %}
-{% endblock %}
+  
+  <script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.1.0/dist/js/materialize.min.js"></script>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  {% block scripts %} {% endblock %}
 </body>
+
 </html>
