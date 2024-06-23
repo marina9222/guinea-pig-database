@@ -11,7 +11,8 @@
     href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.1.0/dist/css/materialize.min.css"
     type="text/css" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css" />
-  {% block styles %} {% endblock %}
+  {% block styles %}
+  {% endblock %}
   <title>Piggy Profiles & Pics Hub</title>
 </head>
 
@@ -29,7 +30,7 @@
           <li><a href="#" class="indigo-text">Add Pet</a></li>
           <li><a href="#" class="indigo-text">Log Out</a></li>
           <li><a href="#" class="indigo-text">Log In</a></li>
-          <li><a href="#" class="indigo-text">Register</a></li>
+          <li><a href="{{ url_for('register') }}" class="indigo-text">Register</a></li>
         </ul>
       </div>
     </nav>
@@ -41,15 +42,17 @@
           <li><a href="#" class="indigo-text">Add Pet</a></li>
           <li><a href="#" class="indigo-text">Log Out</a></li>
           <li><a href="#" class="indigo-text">Log In</a></li>
-          <li><a href="#" class="indigo-text">Register</a></li>
+          <li><a href="{{ url_for('register') }}" class="indigo-text">Register</a></li>
     </ul>
   </header>
-  {% block content %} {% endblock %}
+  {% block content %} 
+  {% endblock %}
 
   
   <script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.1.0/dist/js/materialize.min.js"></script>
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-  {% block scripts %} {% endblock %}
+  {% block scripts %} 
+  {% endblock %}
 </body>
 
 </html>
