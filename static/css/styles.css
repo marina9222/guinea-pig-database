@@ -9,8 +9,16 @@ nav ul li a {
     padding: 0 15px;
 }    
 
-.row {
+.margin-b {
     margin-bottom: 10px;
+}
+ 
+
+.flashes {
+    line-height: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 

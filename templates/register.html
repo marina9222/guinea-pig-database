@@ -5,15 +5,15 @@
 
 <h3 class="center-align">Register</h3>
 <div class="row">
-    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
-      <div class="card-panel light-blue lighten-5 ">
+    <form class="s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
+      <div class="card-panel z-depth-3">
 
          <!-- username field -->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-user-plus prefix indigo-text"></i>
-                <input id="username" name="username" type="text" class="validate">
-                <label for="username">First Name</label>
+                <input id="username" name="username" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$"  class="validate" required>
+                <label for="username">Username</label>
               </div>
         </div>
 
@@ -21,10 +21,17 @@
         <div class="row">
          <div class="input-field col s12">
             <i class="fas fa-user-lock prefix indigo-text"></i>
-            <input id="password" name ="password" type="password" class="validate" placeholder=" " maxlength="20">
-            <label for="password">Password</label>
+            <input id="password" name ="password" type="password" pattern="^[a-zA-Z0-9]{5,15}$"  minlength="5"  class="validate" placeholder=" " maxlength="15" required>
+            <label for="password">Password:</label>
           </div>
         </div>
+        <div class="row margin-b">
+            <div class="input-field col s12">
+               <i class="fas fa-user-lock prefix indigo-text"></i>
+               <input id="confirm_password" name ="confirm_password" type="password" pattern="^[a-zA-Z0-9]{5,15}$"  minlength="5"  class="validate" placeholder=" " maxlength="15" required>
+               <label for="confirm_password">Confirm Password:</label>
+             </div>
+           </div>
         <!-- register -->
         <div class="row">
             <button type="submit" class="col s12 btn-large indigo">
