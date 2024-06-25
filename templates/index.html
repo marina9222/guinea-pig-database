@@ -11,12 +11,13 @@
     href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.1.0/dist/css/materialize.min.css"
     type="text/css" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css" />
-  {% block styles %}
+  {% block styles %} 
   {% endblock %}
   <title>Piggy Profiles & Pics Hub</title>
 </head>
 
 <body>
+
   <header>
     <!-- top navbar-->
 
@@ -25,49 +26,72 @@
         <a href="{{ url_for('get_pets') }}" class="brand-logo indigo-text">Piggy Profiles & Pics Hub</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger right indigo-text"><i class="fas fa-bars"></i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="{{ url_for('get_pets') }}" class="indigo-text">Home</a></li>
-          <li><a href="{{ url_for('profile', username=session['user']) }}" class="indigo-text">Profile</a></li>
+          <li>
+            <a href="{{ url_for('get_pets') }}" class="indigo-text">Home</a>
+          </li>
+        {% if session.user %}
+          <li>
+            <a href="{{ url_for('profile', username=session['user']) }}" class="indigo-text">Profile</a>
+          </li>
           <li><a href="#" class="indigo-text">Add Pet</a></li>
-          <li><a href="#" class="indigo-text">Log Out</a></li>
-          <li><a href="{{ url_for('login') }}" class="indigo-text">Log In</a></li>
-          <li><a href="{{ url_for('register') }}" class="indigo-text">Register</a></li>
+          <li>
+            <a href="{{ url_for('logout') }}" class="indigo-text">Log Out</a>
+          </li>
+        {% else %}
+          <li>
+            <a href="{{ url_for('login') }}" class="indigo-text">Log In</a>
+          </li>
+          <li>
+            <a href="{{ url_for('register') }}" class="indigo-text">Register</a>
+          </li>
+        {% endif %}
         </ul>
       </div>
     </nav>
     <!--mobile side navbar -->
     <ul class="sidenav" id="mobile-demo">
-      <li><h4 class="center-align indigo-text">Piggy Profiles & Pics Hub</h4></li>
-      <li><a href="{{ url_for('get_pets') }}" class="indigo-text">Home</a></li>
-          <li><a href="{{ url_for('profile', username=session['user']) }}" class="indigo-text">Profile</a></li>
-          <li><a href="#" class="indigo-text">Add Pet</a></li>
-          <li><a href="#" class="indigo-text">Log Out</a></li>
-          <li><a href="{{ url_for('login') }}" class="indigo-text">Log In</a></li>
-          <li><a href="{{ url_for('register') }}" class="indigo-text">Register</a></li>
+      <li>
+        <h4 class="center-align indigo-text">Piggy Profiles & Pics Hub</h4>
+      </li>
+      <li>
+        <a href="{{ url_for('get_pets') }}" class="indigo-text">Home</a>
+      </li>
+    {% if session.user %}
+      <li>
+        <a href="{{ url_for('profile', username=session['user']) }}" class="indigo-text">Profile</a>
+      </li>
+      <li><a href="#" class="indigo-text">Add Pet</a></li>
+      <li>
+        <a href="{{ url_for('logout') }}" class="indigo-text">Log Out</a>
+      </li>
+    {% else %}
+      <li><a href="{{ url_for('login') }}" class="indigo-text">Log In</a></li>
+      <li>
+        <a href="{{ url_for('register') }}" class="indigo-text">Register</a>
+      </li>
+    {% endif %}
     </ul>
   </header>
   <section>
     <!-- flash messages -->
     {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                <div class="row flashes">
-                    <h4 class="center-align">{{ message }}</h4>
-                </div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-</section>
+       {% if messages %}
+          {% for message in messages %}
+    <div class="row flashes">
+      <h4 class="center-align">{{ message }}</h4>
+    </div>
+          {% endfor %} 
+       {% endif %} 
+   {% endwith %}
+  </section>
   <main class="container">
-    
-    {% block content %} 
+    {% block content %}
     {% endblock %}
+    </main>
 
-  </main>
-
-  
   <script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.1.0/dist/js/materialize.min.js"></script>
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-  {% block scripts %} 
+  {% block scripts %}
   {% endblock %}
 </body>
 
