@@ -124,6 +124,10 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
+@app.route("/add_pet")
+def add_pet():
+    breeds = mongo.db.breeds.find().sort("pet_breed",1)
+    return render_template("add_pet.html", breeds = breeds)
 
 
 if __name__ == "__main__":

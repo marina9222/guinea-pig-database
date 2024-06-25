@@ -17,4 +17,19 @@ document.addEventListener('DOMContentLoaded', function() {
       
     
   });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, {
+      
+    });
+  });
           
+  function validateAge() {
+    const age = document.getElementById('pet_age').value;
+    if (age < 0) {
+        alert('Age cannot be negative');
+        return false;
+    }
+    return true;
+}
