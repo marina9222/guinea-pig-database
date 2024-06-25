@@ -33,7 +33,7 @@
           <li>
             <a href="{{ url_for('profile', username=session['user']) }}" class="indigo-text">Profile</a>
           </li>
-          <li><a href="#" class="indigo-text">Add Pet</a></li>
+          <li><a href="{{ url_for('add_pet') }}" class="indigo-text">Add Pet</a></li>
           <li>
             <a href="{{ url_for('logout') }}" class="indigo-text">Log Out</a>
           </li>
@@ -60,7 +60,7 @@
       <li>
         <a href="{{ url_for('profile', username=session['user']) }}" class="indigo-text">Profile</a>
       </li>
-      <li><a href="#" class="indigo-text">Add Pet</a></li>
+      <li><a href="{{ url_for('add_pet') }}" class="indigo-text">Add Pet</a></li>
       <li>
         <a href="{{ url_for('logout') }}" class="indigo-text">Log Out</a>
       </li>

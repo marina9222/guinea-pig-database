@@ -9,10 +9,12 @@
    <li>
      <div class="collapsible-header indigo-text light-blue lighten-5 ">🐭<strong>{{pet.pet_name}}</strong></div>
      <div class="collapsible-body">
-        <strong>{{pet.pet_breed}}</strong>
-        <p>{{pet.pet_age}} years old</p>
-        <p>{{pet.pet_character}}</p>
-        {{pet.pet_image}}
+        <strong>Breed:</strong> {{pet.pet_breed}}
+        <p><strong>Age:</strong>{{pet.pet_age}} years old</p>
+        <p><strong>Character: </strong>{{pet.pet_character}}</p>
+        {% if pet.photo_url %}
+          <img src="{{ pet.photo_url }}" alt="{{ pet.name }}" width="200">
+        {% endif %}
 
      </div>
     </li>

@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+{% block content %}
+
+
+<h3 class="center-align">Add a New Pet</h3>
+<div class="row">
+    <form class="col s12" action="{{ url_for('add_pet') }}" method="POST">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="name" name="name" type="text" class="validate" required>
+          <label for="name">Pet Name:</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="age" name="age" type="number" class="validate">
+          <label for="age">Age:</label>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}
