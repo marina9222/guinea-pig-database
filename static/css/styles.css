@@ -12,7 +12,10 @@ nav ul li a {
 .margin-b {
     margin-bottom: 10px;
 }
- 
+
+.margin-l {
+    margin-left: 10px;
+}
 
 .flashes {
     line-height: 2;

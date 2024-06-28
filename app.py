@@ -27,9 +27,9 @@ mongo = PyMongo(app)
 
 # Configurations for Cloudinary API
 cloudinary.config(
-    cloud_name=os.environ.get('CLOUDINARY_CLOUD_NAME'),
-    api_key=os.environ.get('CLOUDINARY_API_KEY'),
-    api_secret=os.environ.get('CLOUDINARY_API_SECRET')
+    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.environ.get("CLOUDINARY_API_KEY"),
+    api_secret=os.environ.get("CLOUDINARY_API_SECRET")
 )
 
 
@@ -124,10 +124,43 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
-@app.route("/add_pet")
+
+
+@app.route("/add_pet", methods=["GET", "POST"])
 def add_pet():
-    breeds = mongo.db.breeds.find().sort("pet_breed",1)
-    return render_template("add_pet.html", breeds = breeds)
+    if request.method == "POST":
+        pet_name = request.form.get("pet_name")
+        pet_age = request.form.get("pet_age")
+        pet_breed = request.form.get("pet_breed")
+        pet_character = request.form.get("pet_character")
+        pet_image = request.files.get("pet_image")
+    
+        
+        if pet_image:
+            # Upload to Cloudinary
+            upload_result = cloudinary.uploader.upload(pet_image)
+            image_url = upload_result["secure_url"]
+                
+            pet = {
+                "name": pet_name,
+                "age": pet_age,
+                "breed": pet_breed,
+                "character": pet_character,
+                "image_url": image_url,  
+            
+            }
+
+            mongo.db.pets.insert_one(pet)
+            flash("Pet added successfully!")
+            return redirect(url_for("get_pets"))
+        else:
+            flash("Please upload an image of your pet.")
+            return redirect(url_for("add_pet"))
+    
+    
+    breeds = mongo.db.breeds.find().sort("pet_breed", 1)
+    return render_template("add_pet.html", breeds=breeds)
+
 
 
 if __name__ == "__main__":
