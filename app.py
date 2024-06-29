@@ -212,6 +212,17 @@ def delete_pet(pet_id):
      return render_template("confirm_delete_pet.html", pet=pet)
     
 
+@app.route("/get_breeds")
+def get_breeds():
+    breeds = list(mongo.db.breeds.find().sort("pet_breed",1))
+    return render_template("breeds.html",breeds = breeds)
+
+
+@app.route("/breed/<breed_name>")
+def breed_details(breed_name):
+    pets = list(mongo.db.pets.find({"pet_breed": breed_name}))
+    return render_template("breed_details.html", breed_name=breed_name, pets=pets)
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

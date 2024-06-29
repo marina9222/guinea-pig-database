@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+{% block content %}
+    <h3 class="indigo-text center-align">Pets with Breed: {{ breed_name }}</h3>
+    <div class="row">
+        {% for pet in pets %}
+            <div class="col s12 m4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="{{ pet.image_url }}" alt="{{ pet.pet_name }}">
+                        <span class="card-title">{{ pet.pet_name }}</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Age: {{ pet.pet_age }}</p>
+                        <p>Character: {{ pet.pet_character }}</p>
+                        <p>Owner: {{ pet.owner }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

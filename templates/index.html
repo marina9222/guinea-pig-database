@@ -35,6 +35,13 @@
           </li>
           <li><a href="{{ url_for('add_pet') }}" class="indigo-text">Add Pet</a></li>
           <li>
+            
+              <a href="{{ url_for('get_breeds') }}" class="indigo-text">Breeds</a>
+            </li>
+            <li>
+              <a href="#" class="indigo-text">My Pets</a>
+            </li>
+            <li>
             <a href="{{ url_for('logout') }}" class="indigo-text">Log Out</a>
           </li>
         {% else %}
@@ -62,6 +69,12 @@
       </li>
       <li><a href="{{ url_for('add_pet') }}" class="indigo-text">Add Pet</a></li>
       <li>
+        <li>
+          <a href="{{ url_for('get_breeds') }}" class="indigo-text">Breeds</a>
+        </li>
+        <li>
+          <a href="#" class="indigo-text">My Pets</a>
+        </li>
         <a href="{{ url_for('logout') }}" class="indigo-text">Log Out</a>
       </li>
     {% else %}

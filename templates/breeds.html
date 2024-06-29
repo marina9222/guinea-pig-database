@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+{% block content %}
+
+    <h3 class="indigo-text center-align"> Find Guinea pigs by Breeds</h3>
+
+    <div class="row">
+        {% for breed in breeds %}
+            <div class="col s12 m3">
+                <div class="card center-align">
+                    <div class="card-content indigo-text">
+                        <span class="card-title">{{ breed.pet_breed }}</span>
+                    </div>
+                    <div class="card-action">
+                        <a href="{{ url_for('breed_details', breed_name=breed.pet_breed) }}" class="btn indigo white-text accent-4">View Pets</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
