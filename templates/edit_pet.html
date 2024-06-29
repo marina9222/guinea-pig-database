@@ -9,14 +9,14 @@
     <!-- Pet name input -->
     <div class="row margin-b">
       <div class="input-field col s12">
-        <input id="pet_name" name="pet_name" type="text" class="validate" minlength="3" maxlength="15">
+        <input id="pet_name" name="pet_name" type="text" class="validate" minlength="3" maxlength="15" value="{{ pet.pet_name }}">
         <label for="pet_name">Pet Name:</label>
       </div>
     </div>
     <!-- Pet age input -->
     <div class="row margin-b">
       <div class="input-field col s12">
-        <input id="pet_age" name="pet_age" type="number" class="validate" min="0">
+        <input id="pet_age" name="pet_age" type="number" class="validate" min="0" value="{{ pet.pet_age }}">
         <label for="pet_age">Age:</label>
       </div>
     </div>
@@ -24,10 +24,15 @@
     <div class="row margin-b">
       <div class="input-field col s12">
         <select id="pet_breed" name="pet_breed" class="validate" required>
-          <option value="" disabled selected>Choose your option</option>
+          <option value="" disabled >Choose your option</option>
           {% for breed in breeds %}
+              {% if breed.pet_breed == pet.pet_breed %}
+                 <option value="{{ breed.pet_breed}}" selected>{{ breed.pet_breed}}</option>
+              {% else %}
           <option value="{{ breed.pet_breed}}">{{ breed.pet_breed}}</option>
+              {% endif %}
           {% endfor %}
+
         </select>
         <label for="form-select-1">Pet Breed:</label>
       </div>
@@ -36,7 +41,9 @@
     <div class="row margin-b">
       <div class="input-field col s12">
         <textarea id="pet_character" name="pet_character" class="materialize-textarea validate" placeholder="Type piggy's character"
-          minlength="5" maxlength="50"></textarea>
+          minlength="5" maxlength="50">
+          {{- pet.pet_character -}}
+        </textarea>
         <label for="pet_character">Pet Character:</label>
       </div>
     </div>
@@ -50,9 +57,13 @@
       </div>
     </div>
 
-    <!-- Submit button -->
+    <!-- Edit button -->
     <div class="row">
       <div class="col s12 center-align">
+         <!-- Cancel button -->
+          <a href="{{ url_for('get_pets') }}" class="btn-large light-blue lighten-5 indigo-text">
+            Cancel<i class="fas fa-times-circle margin-l"></i>
+          </a>
         <button class="btn-large light-blue lighten-5 indigo-text" type="submit">
          Edit Pet<i class="fas fa-edit margin-l"></i>
         </button>
