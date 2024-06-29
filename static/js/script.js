@@ -24,6 +24,13 @@ document.addEventListener('DOMContentLoaded', function() {
       
     });
   });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var modals = document.querySelectorAll('.modal');
+    M.Modal.init(modals);
+});
+
+
           
   function validateAge() {
     const age = document.getElementById('pet_age').value;
@@ -75,6 +82,8 @@ function validateMaterializeSelect() {
       }
   });
 }
+
+
 
 
 
