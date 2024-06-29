@@ -195,6 +195,23 @@ def edit_pet(pet_id):
     return render_template("edit_pet.html", pet=pet,  breeds=breeds)
 
 
+@app.route("/delete_pet,<pet_id>", methods =["GET", "POST"])
+def delete_pet(pet_id):
+     pet = mongo.db.pets.find_one({"_id": ObjectId(pet_id)})
+     if not pet:
+        flash("Pet not found.")
+        return redirect(url_for("get_pets"))  # Redirect to pets listing page or any other page
+
+     if request.method == "POST":
+        confirm_delete = request.form.get("confirm_delete")
+        if confirm_delete == "yes":
+            mongo.db.pets.delete_one({"_id": ObjectId(pet_id)})
+            flash("Pet Successfully Deleted!!")
+        return redirect(url_for("get_pets"))  # Redirect to pets listing page or any other page
+
+     return render_template("confirm_delete_pet.html", pet=pet)
+    
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
