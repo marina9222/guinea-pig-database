@@ -147,7 +147,7 @@ def add_pet():
                 "pet_breed": pet_breed,
                 "pet_character": pet_character,
                 "image_url": image_url,  
-            
+                "owner": session["user"]
             }
 
             mongo.db.pets.insert_one(pet)
@@ -164,6 +164,32 @@ def add_pet():
 
 @app.route("/edit_pet/<pet_id>", methods =["GET", "POST"])
 def edit_pet(pet_id):
+    if request.method == "POST":
+        pet_name = request.form.get("pet_name")
+        pet_age = request.form.get("pet_age")
+        pet_breed = request.form.get("pet_breed")
+        pet_character = request.form.get("pet_character")
+        pet_image = request.files.get("pet_image")
+    
+        
+        update_data = {
+            "pet_name": pet_name,
+            "pet_age": pet_age,
+            "pet_breed": pet_breed,
+            "pet_character": pet_character,
+            "owner": session["user"]
+        }
+        
+        if pet_image:
+            # Upload to Cloudinary
+            upload_result = cloudinary.uploader.upload(pet_image)
+            image_url = upload_result["secure_url"]
+            update_data["image_url"] = image_url
+
+        mongo.db.pets.update_one({"_id": ObjectId(pet_id)}, {"$set": update_data})
+        flash("Pet Information Updated Successfully!")
+        return redirect(url_for("edit_pet", pet_id=pet_id))
+    
     pet = mongo.db.pets.find_one({"_id": ObjectId(pet_id)})
     breeds = mongo.db.breeds.find().sort("pet_breed", 1)
     return render_template("edit_pet.html", pet=pet,  breeds=breeds)

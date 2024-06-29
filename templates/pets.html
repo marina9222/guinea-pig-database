@@ -10,7 +10,9 @@
      <div class="collapsible-header indigo-text light-blue lighten-5 flex">
       🐭 <strong>{{pet.pet_name}}</strong>
       <div class="col s3">
+        {% if session.user|lower == pet.owner|lower %}
         <a href="{{ url_for('edit_pet', pet_id=pet._id) }}" class="btn-small indigo">Edit Pet</a>
+        {% endif %}
     </div>
     </div>
     
