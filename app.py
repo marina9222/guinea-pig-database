@@ -152,7 +152,7 @@ def add_pet():
 
             mongo.db.pets.insert_one(pet)
             flash("Pet added successfully!")
-            return redirect(url_for("get_pets"))
+            return redirect(url_for("my_pets"))
         else:
             flash("Please upload an image of your pet.")
             return redirect(url_for("add_pet"))
@@ -200,15 +200,14 @@ def delete_pet(pet_id):
      pet = mongo.db.pets.find_one({"_id": ObjectId(pet_id)})
      if not pet:
         flash("Pet not found.")
-        return redirect(url_for("get_pets"))  # Redirect to pets listing page or any other page
+        return redirect(url_for("my_pets")) 
 
      if request.method == "POST":
         confirm_delete = request.form.get("confirm_delete")
         if confirm_delete == "yes":
             mongo.db.pets.delete_one({"_id": ObjectId(pet_id)})
             flash("Pet Successfully Deleted!!")
-        return redirect(url_for("get_pets"))  # Redirect to pets listing page or any other page
-
+        return redirect(url_for("my_pets"))  
      return render_template("confirm_delete_pet.html", pet=pet)
     
 
@@ -220,8 +219,25 @@ def get_breeds():
 
 @app.route("/breed/<breed_name>")
 def breed_details(breed_name):
+    breed = mongo.db.breeds.find_one({"pet_breed": breed_name})
     pets = list(mongo.db.pets.find({"pet_breed": breed_name}))
-    return render_template("breed_details.html", breed_name=breed_name, pets=pets)
+     
+    if not breed:
+        flash("Breed not found.")
+        return redirect(url_for('get_breeds'))
+    return render_template("breed_details.html", breed=breed, pets=pets)
+
+
+@app.route("/my_pets")
+def my_pets():
+    if "user" not in session:
+        flash("You need to be logged in to view your pets.")
+        return redirect(url_for("login"))
+
+    user = session["user"]
+    pets = list(mongo.db.pets.find({"owner": user}))
+
+    return render_template("my_pets.html", pets=pets)
 
 
 if __name__ == "__main__":

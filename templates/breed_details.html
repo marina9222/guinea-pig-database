@@ -1,6 +1,12 @@
 {% extends "index.html" %}
 {% block content %}
-    <h3 class="indigo-text center-align">Pets with Breed: {{ breed_name }}</h3>
+
+<h2 class="indigo-text center-align">{{ breed.pet_breed }}</h2>
+<div class="center-align">
+    <p>{{ breed.info }}</p>
+</div>
+
+    <h3 class="indigo-text center-align">Pets with this breed: {{ breed_name }}</h3>
     <div class="row">
         {% for pet in pets %}
             <div class="col s12 m4">

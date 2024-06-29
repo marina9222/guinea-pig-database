@@ -28,7 +28,11 @@ nav ul li a {
     margin-left: 15px;
 }
 
+.card-image img {
+    object-fit: cover;
+    height: 150px;
 
+}
 
 /* Media queries */
 
