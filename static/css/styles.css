@@ -24,6 +24,10 @@ nav ul li a {
     justify-content: center;
 }
 
+.btn-small {
+    margin-left: 15px;
+}
+
 
 
 /* Media queries */

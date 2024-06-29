@@ -7,10 +7,16 @@
 <ul class="collapsible">
     {% for pet in pets %}
    <li>
-     <div class="collapsible-header indigo-text light-blue lighten-5 ">🐭<strong>{{pet.pet_name}}</strong></div>
+     <div class="collapsible-header indigo-text light-blue lighten-5 flex">
+      🐭 <strong>{{pet.pet_name}}</strong>
+      <div class="col s3">
+        <a href="{{ url_for('edit_pet', pet_id=pet._id) }}" class="btn-small indigo">Edit Pet</a>
+    </div>
+    </div>
+    
      <div class="collapsible-body">
         <strong>Breed:</strong> {{pet.pet_breed}}
-        <p><strong>Age:</strong>{{pet.pet_age}} years old</p>
+        <p><strong>Age: </strong>{{pet.pet_age}}  years old</p>
         <p><strong>Character: </strong>{{pet.pet_character}}</p>
         {% if pet.image_url %}
           <img src="{{ pet.image_url }}" alt="{{ pet.name }}" width="200">

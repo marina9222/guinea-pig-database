@@ -142,10 +142,10 @@ def add_pet():
             image_url = upload_result["secure_url"]
                 
             pet = {
-                "name": pet_name,
-                "age": pet_age,
-                "breed": pet_breed,
-                "character": pet_character,
+                "pet_name": pet_name,
+                "pet_age": pet_age,
+                "pet_breed": pet_breed,
+                "pet_character": pet_character,
                 "image_url": image_url,  
             
             }
@@ -160,6 +160,13 @@ def add_pet():
     
     breeds = mongo.db.breeds.find().sort("pet_breed", 1)
     return render_template("add_pet.html", breeds=breeds)
+
+
+@app.route("/edit_pet/<pet_id>", methods =["GET", "POST"])
+def edit_pet(pet_id):
+    pet = mongo.db.pets.find_one({"_id": ObjectId(pet_id)})
+    breeds = mongo.db.breeds.find().sort("pet_breed", 1)
+    return render_template("edit_pet.html", pet=pet,  breeds=breeds)
 
 
 

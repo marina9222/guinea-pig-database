@@ -1,0 +1,66 @@
+{% extends "index.html" %}
+{% block content %}
+
+
+<h3 class="center-align">Edit Pet</h3>
+<div class="row card-panel z-depth-3">
+  <form class="col s12" action="{{ url_for('edit_pet',pet_id=pet._id) }}" method="POST"  enctype="multipart/form-data">
+
+    <!-- Pet name input -->
+    <div class="row margin-b">
+      <div class="input-field col s12">
+        <input id="pet_name" name="pet_name" type="text" class="validate" minlength="3" maxlength="15">
+        <label for="pet_name">Pet Name:</label>
+      </div>
+    </div>
+    <!-- Pet age input -->
+    <div class="row margin-b">
+      <div class="input-field col s12">
+        <input id="pet_age" name="pet_age" type="number" class="validate" min="0">
+        <label for="pet_age">Age:</label>
+      </div>
+    </div>
+    <!-- Pet breed category -->
+    <div class="row margin-b">
+      <div class="input-field col s12">
+        <select id="pet_breed" name="pet_breed" class="validate" required>
+          <option value="" disabled selected>Choose your option</option>
+          {% for breed in breeds %}
+          <option value="{{ breed.pet_breed}}">{{ breed.pet_breed}}</option>
+          {% endfor %}
+        </select>
+        <label for="form-select-1">Pet Breed:</label>
+      </div>
+    </div>
+    <!-- Pet character description -->
+    <div class="row margin-b">
+      <div class="input-field col s12">
+        <textarea id="pet_character" name="pet_character" class="materialize-textarea validate" placeholder="Type piggy's character"
+          minlength="5" maxlength="50"></textarea>
+        <label for="pet_character">Pet Character:</label>
+      </div>
+    </div>
+
+    <!-- Pet Photo Upload -->
+
+    <div class="row margin-b">
+      <div class="input-field col s12">
+        <input type="file" name="pet_image" id="pet_image" class="validate" required>
+        <label for="pet_image">Upload Pet Image:</label>
+      </div>
+    </div>
+
+    <!-- Submit button -->
+    <div class="row">
+      <div class="col s12 center-align">
+        <button class="btn-large light-blue lighten-5 indigo-text" type="submit">
+         Edit Pet<i class="fas fa-edit margin-l"></i>
+        </button>
+      </div>
+    </div>
+
+
+
+  </form>
+</div>
+{% endblock %}
