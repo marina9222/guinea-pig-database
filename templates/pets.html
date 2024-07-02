@@ -10,38 +10,53 @@
   {% for pet in pets %}
   <div class="col s12 m6 l4">
       <div class="card">
+          <a class="modal-trigger" href="#modal{{ pet.pet._id }}">
           <div class="card-image">
-            <a class="modal-trigger" href="#modal{{ pet._id }}">
-              {% if pet.image_url %}
-              <img src="{{ pet.image_url }}" alt="{{ pet.pet_name }}">
+              {% if pet.pet.image_url %}
+              <img src="{{ pet.pet.image_url }}" alt="{{ pet.pet.pet_name }}">
               {% else %}
               <img src="placeholder.jpg" alt="Placeholder">
               {% endif %}
-              <span class="card-title">{{ pet.pet_name }}</span>
+              <span class="card-title">{{ pet.pet.pet_name }}</span>
           </div>
+          </a>
           <div class="card-content">
-              <p><strong>Breed:</strong> {{ pet.pet_breed }}</p>
-              <p><strong>Age:</strong> {{ pet.pet_age }} years old</p>
-              <p><strong>Character:</strong> {{ pet.pet_character }}</p>
-              {% if session.user %}
-                  {% if session.user|lower == pet.owner|lower %}
-                  <div class="card-action">
-                      <a href="{{ url_for('edit_pet', pet_id=pet._id) }}" class="btn indigo">Edit Pet</a>
-                      <a href="{{ url_for('delete_pet', pet_id=pet._id) }}" class="btn red">Delete Pet</a>
-                  </div>
-                  {% endif %}
-              {% endif %}
+            <div class="row">
+                <div class="col s10">
+                <p><strong>Breed:</strong> {{ pet.pet.pet_breed }}</p>
+                <p><strong>Age:</strong> {{ pet.pet.pet_age }} years old</p>
+                <p><strong>Character:</strong> {{ pet.pet.pet_character }}</p>
+                {% if session.user %}
+                    {% if session.user|lower == pet.pet.owner|lower %}
+                    <div class="card-action">
+                        <a href="{{ url_for('edit_pet', pet_id=pet.pet._id) }}" class="btn indigo">Edit Pet</a>
+                        <a href="{{ url_for('delete_pet', pet_id=pet.pet._id) }}" class="btn red">Delete Pet</a>
+                    </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+                <div class="col s2">
+                    likes: {{pet.likes}}
+                    {% if session.user %}
+                     {% if pet.liked %}
+                            <a href="{{ url_for('unlike_pet', pet_id=pet.pet._id) }}">Unlike</a>
+                        {% else %}
+                            <a href="{{ url_for('like_pet', pet_id=pet.pet._id) }}">Like</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
           </div>
       </div>
   </div>
   <!-- Modal Structure -->
-  <div id="modal{{ pet._id }}" class="modal">
+  <div id="modal{{ pet.pet._id }}" class="modal">
     <div class="modal-content">
-        <h4>{{ pet.pet_name }}</h4>
-        <img src="{{ pet.image_url }}" alt="{{ pet.pet_name }}" class="responsive-img">
-        <p><strong>Breed:</strong> {{ pet.pet_breed }}</p>
-        <p><strong>Age:</strong> {{ pet.pet_age }} years old</p>
-        <p><strong>Character:</strong> {{ pet.pet_character }}</p>
+        <h4>{{ pet.pet.pet_name }}</h4>
+        <img src="{{ pet.pet.image_url }}" alt="{{ pet.pet.pet_name }}" class="responsive-img">
+        <p><strong>Breed:</strong> {{ pet.pet.pet_breed }}</p>
+        <p><strong>Age:</strong> {{ pet.pet.pet_age }} years old</p>
+        <p><strong>Character:</strong> {{ pet.pet.pet_character }}</p>
     </div>
     <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>

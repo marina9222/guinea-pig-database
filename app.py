@@ -6,6 +6,7 @@ redirect,request,session,url_for)
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from collections import defaultdict
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -36,7 +37,29 @@ cloudinary.config(
 @app.route("/")
 @app.route("/get_pets")
 def get_pets():
-    pets = mongo.db.pets.find()
+    all_pets = list(mongo.db.pets.find())
+    if "user" in session:
+        user = mongo.db.users.find_one({"username": session["user"]})
+        liked_pets = user.get("liked_pets", [])
+    else:
+        liked_pets = []
+
+    all_users = list(mongo.db.users.find({}, {"liked_pets": 1}))
+    pet_likes = defaultdict(int)
+    for user in all_users:
+        for pet_id in user.get("liked_pets", []):
+            pet_likes[pet_id] += 1
+    
+    # Create a combined list of pets, with their liked status
+    pets = []
+    for pet in all_pets:
+        pet_id = ObjectId(pet["_id"])
+        if pet_id in liked_pets:
+            liked = pet_id in liked_pets
+        else:
+            liked = False 
+        pets.append({"pet": pet, "liked": liked})
+        likes = pet_likes[pet_id]
     return render_template('pets.html', pets=pets)
 
 
@@ -61,7 +84,8 @@ def register():
 
         register = {
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")),
+            "liked_pets": []
         }
         mongo.db.users.insert_one(register)
 
@@ -238,6 +262,38 @@ def my_pets():
     pets = list(mongo.db.pets.find({"owner": user}))
 
     return render_template("my_pets.html", pets=pets)
+
+
+@app.route("/like_pet/<pet_id>")
+def like_pet(pet_id):
+    """
+    Add pet to user favourites if logged-in.
+    """
+    if "user" not in session:
+        flash("You need to be logged in to like a pet.")
+        return redirect(url_for("login"))
+
+    mongo.db.users.find_one_and_update(
+        {"username": session["user"]},
+        {"$push": {"liked_pets": ObjectId(pet_id)}})
+    flash("Lovely to hear you like this pet!")
+    return redirect(url_for("get_pets"))
+
+
+@app.route("/unlike_pet/<pet_id>")
+def unlike_pet(pet_id):
+    """
+    Remove pet from user favourites if logged-in.
+    """
+    if "user" not in session:
+        flash("You need to be logged in to unlike a pet.")
+        return redirect(url_for("login"))
+
+    mongo.db.users.find_one_and_update(
+        {"username": session["user"]},
+        {"$pull": {"liked_pets": ObjectId(pet_id)}})
+    flash("How sad, you no longer like this pet.")
+    return redirect(url_for("get_pets"))
 
 
 if __name__ == "__main__":
