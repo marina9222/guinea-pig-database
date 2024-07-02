@@ -53,13 +53,12 @@ def get_pets():
     # Create a combined list of pets, with their liked status
     pets = []
     for pet in all_pets:
-        pet_id = ObjectId(pet["_id"])
-        if pet_id in liked_pets:
-            liked = pet_id in liked_pets
-        else:
-            liked = False 
-        pets.append({"pet": pet, "liked": liked})
+        pet_id = pet["_id"]
+        liked = pet_id in liked_pets
         likes = pet_likes[pet_id]
+        pets.append({"pet": pet, "liked": liked, "likes": likes})
+
+    pets = sorted(pets, key=lambda x: x["likes"], reverse=True)
     return render_template('pets.html', pets=pets)
 
 
