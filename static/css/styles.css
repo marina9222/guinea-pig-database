@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #fafafa;
+}
+
 .brand-logo {
     font-size: 1.5rem;
     white-space: nowrap;
@@ -8,6 +21,7 @@
 nav ul li a {
     padding: 0 15px;
 }    
+
 
 .margin-b {
     margin-bottom: 10px;
@@ -24,14 +38,38 @@ nav ul li a {
     justify-content: center;
 }
 
+.nav-wrapper{
+   background-color: #F1EFE7;
+}
+
+
+.nav-wrapper img {
+  max-height: 60px;
+}
+
+.sidenav{
+    background-color:#F1EFE7 ;
+}
+
 .btn-small {
     margin-left: 15px;
 }
 
-.card-image img {
-    object-fit: cover;
-    height: 150px;
+.font {
+    font-family: "Montserrat",sans-serif;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+.font-2 {
+    font-family: "Roboto",sans-serif;
+    text-transform: uppercase;
+    
+}
 
+
+.modal-content {
+    width: 100%;
+    object-fit: cover;
 }
 
 
@@ -45,11 +83,19 @@ nav ul li a {
     }
 }
 
+
 @media (max-width: 600px) {
     .brand-logo {
         font-size: 1rem;
         padding-left: 10px;
     }
+    .nav-wrapper img {
+        max-height: 50px;
+      }
+      
 }
+
+
+  
 
 

@@ -2,13 +2,13 @@
 {% block content %}
 
     
-<h3 class="center-align">Welcome to Piggy Profiles & Pics Hub</h3>
+<h3 class="center-align font-2 mb-6">Welcome to Piggy Profiles & Pics Hub</h3>
 
-<h5 class="center-align">Here you can find profiles and pictures of adorable guinea pigs pets added by their owner!</h5>
+<h5 class="center-align font mb-6 indigo-text">Here you can find profiles and pictures of adorable guinea pigs pets added by their owner!</h5>
 
 <div class="row">
   {% for pet in pets %}
-  <div class="col s12 m6 l4">
+  <div class="col s12 m3">
       <div class="card">
           <a class="modal-trigger" href="#modal{{ pet.pet._id }}">
           <div class="card-image">
@@ -26,6 +26,7 @@
                 <p><strong>Breed:</strong> {{ pet.pet.pet_breed }}</p>
                 <p><strong>Age:</strong> {{ pet.pet.pet_age }} years old</p>
                 <p><strong>Character:</strong> {{ pet.pet.pet_character }}</p>
+                <p><strong>Owner:</strong> {{ pet.pet.owner }}</p>
                 {% if session.user %}
                     {% if session.user|lower == pet.pet.owner|lower %}
                     <div class="card-action">
@@ -36,7 +37,7 @@
                 {% endif %}
             </div>
                 <div class="col s2">
-                    likes: {{pet.likes}}
+                    <p>Likes: {{pet.likes}}</p>
                     {% if session.user %}
                      {% if pet.liked %}
                             <a href="{{ url_for('unlike_pet', pet_id=pet.pet._id) }}">Unlike</a>
