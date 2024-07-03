@@ -23,10 +23,10 @@
           <div class="card-content">
             <div class="row">
                 <div class="col s10">
-                <p><strong>Breed:</strong> {{ pet.pet.pet_breed }}</p>
-                <p><strong>Age:</strong> {{ pet.pet.pet_age }} years old</p>
-                <p><strong>Character:</strong> {{ pet.pet.pet_character }}</p>
-                <p><strong>Owner:</strong> {{ pet.pet.owner }}</p>
+                <p class="mb-2"><strong>Breed:</strong> {{ pet.pet.pet_breed }}</p>
+                <p class="mb-2"><strong>Age:</strong> {{ pet.pet.pet_age }} years old</p>
+                <p class="mb-2"><strong>Character:</strong> {{ pet.pet.pet_character }}</p>
+                <p class="mb-4"><strong>Owner:</strong> {{ pet.pet.owner }}</p>
                 {% if session.user %}
                     {% if session.user|lower == pet.pet.owner|lower %}
                     <div class="card-action">
@@ -36,16 +36,16 @@
                     {% endif %}
                 {% endif %}
             </div>
-                <div class="col s2">
-                    <p>Likes: {{pet.likes}}</p>
-                    {% if session.user %}
-                     {% if pet.liked %}
-                            <a href="{{ url_for('unlike_pet', pet_id=pet.pet._id) }}">Unlike</a>
-                        {% else %}
-                            <a href="{{ url_for('like_pet', pet_id=pet.pet._id) }}">Like</a>
-                        {% endif %}
+            <div class="col s2">
+                <p>Likes: {{pet.likes}}</p>
+                {% if session.user %}
+                 {% if pet.liked %}
+                        <a href="{{ url_for('unlike_pet', pet_id=pet.pet._id) }}" class="btn-small indigo white-text">Unlike<i class="fa-solid fa-thumbs-down"></i></a>
+                    {% else %}
+                        <a href="{{ url_for('like_pet', pet_id=pet.pet._id) }}" class="btn-small indigo white-text">Like<i class="fa-solid fa-thumbs-up"></i></a>
                     {% endif %}
-                </div>
+                {% endif %}
+            </div>
             </div>
           </div>
       </div>
