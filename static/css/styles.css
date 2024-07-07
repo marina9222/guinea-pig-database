@@ -8,7 +8,7 @@
 }
 
 body{
-    background-color: #fafafa;
+    background-color: #e7d3c3;
 
 }
 
@@ -22,8 +22,12 @@ html, body {
   main {
     flex: 1;
   }
-
- 
+  .main-text-color {
+    color:#342719 !important; 
+  }
+ .sidenav-close {
+    cursor: pointer;
+ }
 .brand-logo {
     font-size: 1.5rem;
     white-space: nowrap;
@@ -41,7 +45,7 @@ nav ul a:hover {
 }
 
 li:hover {
-    border-bottom: 3px solid #3f51b5;
+    border-bottom: 3px solid #342719;
   }
 
 
@@ -61,7 +65,7 @@ li:hover {
 }
 
 .nav-wrapper{
-   background-color: #F1EFE7;
+   background-color: #c6b6a7;
 }
 
 
@@ -70,7 +74,7 @@ li:hover {
 }
 
 .sidenav{
-    background-color:#F1EFE7 ;
+    background-color:#c6b6a7 ;
 }
 
 .btn-small {
@@ -93,9 +97,15 @@ li:hover {
     flex-direction: column;
     height: 100%;
     box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.2);
-    transition:0.3s
+    transition:0.3s;
+    background-color:#d7b3a1;
   }
+  
+  .card-content-text {
+    display: flex;
+    flex-direction: column;
 
+  }
   .card:hover{
   transition:0.3s;
   box-shadow: 8px 8px 16px 0 rgba(0,0,0,0.2),-8px -8px 16px 0 rgba(0,0,0,0.2);
@@ -109,7 +119,46 @@ li:hover {
     overflow: hidden;
     padding: 15px;
     margin-bottom:10px;
+    
   }
+
+  .like-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .text-bold {
+    font-weight: 600;
+  }
+
+  .flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-item {
+    flex: 1;
+    margin: 0;
+}
+
+  .card-action {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 5px;
+  }
+
+  .card .card-action a {
+    display: flex;
+    justify-content: center;  
+  }
+
+  
+  .btn-small i {
+    font-size: 1.1rem;
+  }
+
 
  .card-content p{
     font-family: "Montserrat",sans-serif;
@@ -136,13 +185,13 @@ li:hover {
   }
 
 
-/* .modal-content {
+.modal-content {
     width: 100%;
     object-fit: cover;
-} */
+}
 
 footer{
-    background-color: #F1EFE7;
+    background-color: #c6b6a7;
 }
 
 .page-footer {
@@ -162,6 +211,9 @@ footer{
     .brand-logo {
         font-size: 1.2rem;
     }
+    li:hover{
+        border-bottom: none;
+      }
 }
 
 
@@ -173,7 +225,10 @@ footer{
     .nav-wrapper img {
         max-height: 50px;
       }
-      
+    
+      li:hover {
+        border-bottom: none;
+      }
 }
 
 

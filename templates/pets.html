@@ -4,7 +4,8 @@
     
 <h3 class="center-align font-2 mb-6">Welcome to Piggy Profiles & Pics Hub</h3>
 
-<h5 class="center-align font mb-6 indigo-text">Here you can find profiles and pictures of adorable guinea pigs pets added by their owner!</h5>
+<h5 class="center-align font mb-6 indigo-text mb-6 main-text-color">Here you can find profiles and pictures of adorable guinea pigs added by their owner!</h5>
+<h5 class="center-align font mb-6 indigo-text main-text-color">Look for a guinea pig by its <a href="{{ url_for('get_breeds') }}" class="black-text text-bold">breed!</a></h5>
 
 <div class="row">
   {% for pet in pets %}
@@ -22,29 +23,31 @@
           </a>
           <div class="card-content">
             <div class="row">
-                <div class="col s10">
+                <div class="col s10 card-content-text">
                 <p class="mb-2"><strong>Breed:</strong> {{ pet.pet.pet_breed }}</p>
                 <p class="mb-2"><strong>Age:</strong> {{ pet.pet.pet_age }} years old</p>
                 <p class="mb-2"><strong>Character:</strong> {{ pet.pet.pet_character }}</p>
                 <p class="mb-4"><strong>Owner:</strong> {{ pet.pet.owner }}</p>
                 {% if session.user %}
                     {% if session.user|lower == pet.pet.owner|lower %}
-                    <div class="card-action">
-                        <a href="{{ url_for('edit_pet', pet_id=pet.pet._id) }}" class="btn indigo">Edit Pet</a>
-                        <a href="{{ url_for('delete_pet', pet_id=pet.pet._id) }}" class="btn red">Delete Pet</a>
+                    <div class="card-action flex-container mb-4">
+                        <a href="{{ url_for('edit_pet', pet_id=pet.pet._id) }}" class="btn-small indigo flex-item white-text font-2">Edit Pet</a>
+                        <a href="{{ url_for('delete_pet', pet_id=pet.pet._id) }}" class="btn-small red flex-item white-text font-2">Delete Pet</a>
                     </div>
                     {% endif %}
                 {% endif %}
-            </div>
-            <div class="col s2">
-                <p>Likes: {{pet.likes}}</p>
-                {% if session.user %}
-                 {% if pet.liked %}
-                        <a href="{{ url_for('unlike_pet', pet_id=pet.pet._id) }}" class="btn-small indigo white-text">Unlike<i class="fa-solid fa-thumbs-down"></i></a>
-                    {% else %}
-                        <a href="{{ url_for('like_pet', pet_id=pet.pet._id) }}" class="btn-small indigo white-text">Like<i class="fa-solid fa-thumbs-up"></i></a>
+                <div class="col s2 card-content-text">
+                    <div class="like-container">
+                    <p class="text-bold">Likes: {{pet.likes}}</p>
+                    {% if session.user %}
+                     {% if pet.liked %}
+                            <a href="{{ url_for('unlike_pet', pet_id=pet.pet._id) }}" class="btn-small indigo white-text ml-6 font-2">Unlike<i class="fa-solid fa-thumbs-down ml-2 center-align"></i></a>
+                        {% else %}
+                            <a href="{{ url_for('like_pet', pet_id=pet.pet._id) }}" class="btn-small indigo white-text ml-6 font-2">Like<i class="fa-solid fa-thumbs-up ml-2 center-align"></i></a>
+                        {% endif %}
                     {% endif %}
-                {% endif %}
+                </div>
+            </div>
             </div>
             </div>
           </div>
