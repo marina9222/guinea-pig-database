@@ -236,12 +236,15 @@ li:hover {
 }
 
 .form-text {
-  font-family: "Roboto",sans-serif;
+  font-family: "Montserrat",sans-serif;
   font-weight: 400;
   font-size: 35px;
   text-transform: uppercase;
+  margin-bottom: 15px !important;
+}
 
-
+.form {
+  max-width: 1200px;
 }
 
 .form-label {
@@ -251,6 +254,18 @@ li:hover {
     width: 100%;
     object-fit: cover;
 }
+
+.modal-content img {
+  width: 100%;
+}
+
+
+.delete-modal {
+  width: 500px;
+  border-radius: 0;
+ 
+}
+
 
 footer{
     background-color: #c6b6a7;

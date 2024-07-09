@@ -2,9 +2,11 @@
 {% block content %}
 
 <h3 class="indigo-text center-align">My Pets</h3>
+
 <div class="row">
-    {% for pet in pets %}
-    <div class="col s12 m4 l3">
+    {% if pets %}
+        {% for pet in pets %}
+        <div class="col s12 m4 l3">
             <div class="card small center-align">
                 <div class="card-image">
                     <img src="{{ pet.image_url }}" alt="{{ pet.pet_name }}" class="responsive-img">
@@ -17,15 +19,29 @@
                 </div>
                 <div class="card-action">
                     <a href="{{ url_for('edit_pet', pet_id=pet._id) }}" class="btn indigo">Edit</a>
-                    <a href="{{ url_for('delete_pet', pet_id=pet._id) }}" class="btn indigo">Delete</a>
+                    <a href="{{ url_for('delete_pet', pet_id=pet._id) }}" class="btn indigo modal-trigger" data-target="deleteModal{{ pet._id }}">Delete</a>
                 </div>
             </div>
         </div>
-    {% else %}
-     
-    <h3 class="indigo-text center-align block">You have not added any pets yet.</h3>
 
-    {% endfor %}
+        <!-- Delete Modal -->
+        <div id="deleteModal{{ pet._id }}" class="modal delete-modal">
+            <div class="modal-content">
+                <h4>Delete Confirmation</h4>
+                <p>Are you sure you want to delete <strong>{{ pet.pet_name }}</strong>?</p>
+            </div>
+            <div class="modal-footer">
+                <form action="{{ url_for('delete_pet', pet_id=pet._id) }}" method="POST">
+                    <input type="hidden" name="confirm_delete" value="yes">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat btn-small  white-text font-2 grey lighten-2">Cancel</a>
+                    <button type="submit" class="modal-close waves-effect waves-green btn-flat red btn-small white-text font-2">Delete</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <h3 class="indigo-text center-align">You have not added any pets yet.</h3>
+    {% endif %}
 </div>
 
 {% endblock %}

@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   document.addEventListener('DOMContentLoaded', function() {
-    var modals = document.querySelectorAll('.modal');
-    M.Modal.init(modals);
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
 });
 
 
