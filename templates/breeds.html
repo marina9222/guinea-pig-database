@@ -1,17 +1,20 @@
 {% extends "index.html" %}
 {% block content %}
 
-    <h3 class="indigo-text center-align"> Find Guinea pigs by Breeds</h3>
+    <h3 class="center-align font-2 mb-6"> Find Guinea pigs by Breeds</h3>
 
     <div class="row">
         {% for breed in breeds %}
             <div class="col s12 m3">
                 <div class="card center-align">
+                    <div class="card-image">
+                        <img src="{{ breed.breed_image }}" alt="{{ breed.pet_breed }}" class="responsive-img breed-img">
+                    </div>
                     <div class="card-content indigo-text">
-                        <span class="card-title">{{ breed.pet_breed }}</span>
+                        <span class="card-title-breed">{{ breed.pet_breed }}</span>
                     </div>
                     <div class="card-action">
-                        <a href="{{ url_for('breed_details', breed_name=breed.pet_breed) }}" class="btn indigo white-text accent-4">View Pets</a>
+                        <a href="{{ url_for('breed_details', breed_name=breed.pet_breed) }}" class="btn indigo white-text font-2 mb-4">View Pets</a>
                     </div>
                 </div>
             </div>

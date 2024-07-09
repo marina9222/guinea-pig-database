@@ -4,8 +4,8 @@
     
 <h3 class="center-align font-2 mb-6">Welcome to Piggy Profiles & Pics Hub</h3>
 
-<h5 class="center-align font mb-6 indigo-text mb-6 main-text-color">Here you can find profiles and pictures of adorable guinea pigs added by their owner!</h5>
-<h5 class="center-align font mb-6 indigo-text main-text-color">Look for a guinea pig by its <a href="{{ url_for('get_breeds') }}" class="black-text text-bold">breed!</a></h5>
+<h5 class="center-align font mb-6  main-text-color">Here you can find profiles and pictures of adorable guinea pigs added by their owner!</h5>
+<h5 class="center-align font mb-6 main-text-color">Look for a guinea pig by its <a href="{{ url_for('get_breeds') }}" class="black-text text-bold">breed!</a></h5>
 
 <div class="row">
   {% for pet in pets %}
@@ -14,7 +14,7 @@
           <a class="modal-trigger" href="#modal{{ pet.pet._id }}">
           <div class="card-image">
               {% if pet.pet.image_url %}
-              <img src="{{ pet.pet.image_url }}" alt="{{ pet.pet.pet_name }}">
+              <img src="{{ pet.pet.image_url }}" alt="{{ pet.pet.pet_name }}" class="custom-img">
               {% else %}
               <img src="placeholder.jpg" alt="Placeholder">
               {% endif %}
@@ -58,9 +58,6 @@
     <div class="modal-content">
         <h4>{{ pet.pet.pet_name }}</h4>
         <img src="{{ pet.pet.image_url }}" alt="{{ pet.pet.pet_name }}" class="responsive-img">
-        <p><strong>Breed:</strong> {{ pet.pet.pet_breed }}</p>
-        <p><strong>Age:</strong> {{ pet.pet.pet_age }} years old</p>
-        <p><strong>Character:</strong> {{ pet.pet.pet_character }}</p>
     </div>
     <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>

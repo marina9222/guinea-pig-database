@@ -1,27 +1,70 @@
 {% extends "index.html" %}
 {% block content %}
 
-<h2 class="indigo-text center-align">{{ breed.pet_breed }}</h2>
+<h2 class="center-align font-2 mb-6">{{ breed.pet_breed }}</h2>
 <div class="center-align">
-    <p>{{ breed.info }}</p>
+    <p class="center-align font mb-6 main-text-color">{{ breed.info }}</p>
 </div>
 
-    <h3 class="indigo-text center-align">Pets with this breed: {{ breed_name }}</h3>
-    <div class="row">
-        {% for pet in pets %}
-            <div class="col s12 m4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="{{ pet.image_url }}" alt="{{ pet.pet_name }}">
-                        <span class="card-title">{{ pet.pet_name }}</span>
-                    </div>
-                    <div class="card-content">
-                        <p>Age: {{ pet.pet_age }}</p>
-                        <p>Character: {{ pet.pet_character }}</p>
-                        <p>Owner: {{ pet.owner }}</p>
-                    </div>
-                </div>
+<h3 class="center-align font mb-6 main-text-color text-bold">Pets with this breed: {{ breed_name }}</h3>
+<div class="row">
+    {% for pet in pets %}
+    <div class="col s12 m3">
+        <div class="card">
+            <a class="modal-trigger" href="#modal{{ pet['_id'] }}">
+            <div class="card-image">
+                {% if pet['image_url'] %}
+                <img src="{{ pet['image_url'] }}" alt="{{ pet['pet_name'] }}" class="custom-img">
+                {% else %}
+                <img src="placeholder.jpg" alt="Placeholder">
+                {% endif %}
+                <span class="card-title">{{ pet['pet_name'] }}</span>
             </div>
-        {% endfor %}
+            </a>
+            <div class="card-content">
+              <div class="row">
+                  <div class="col s10 card-content-text">
+                    <p class="mb-2"><strong>Breed:</strong> {{ pet['pet_breed'] }}</p>
+                        <p class="mb-2"><strong>Age:</strong> {{ pet['pet_age'] }} years old</p>
+                        <p class="mb-2"><strong>Character:</strong> {{ pet['pet_character'] }}</p>
+                        <p class="mb-4"><strong>Owner:</strong> {{ pet['owner'] }}</p>
+                  {% if session.user %}
+                      {% if session.user|lower == pet['owner']|lower %}
+                      <div class="card-action flex-container mb-4">
+                        <a href="{{ url_for('edit_pet', pet_id=pet['_id']) }}" class="btn-small indigo flex-item white-text font-2">Edit Pet</a>
+                        <a href="{{ url_for('delete_pet', pet_id=pet['_id']) }}" class="btn-small red flex-item white-text font-2">Delete Pet</a>
+                      </div>
+                      {% endif %}
+                  {% endif %}
+                  <div class="col s2 card-content-text">
+                      <div class="like-container">
+                        <p class="text-bold">Likes: {{ pet['likes'] }}</p>
+                      {% if session.user %}
+                       {% if pet.liked %}
+                       <a href="{{ url_for('unlike_pet', pet_id=pet['_id']) }}" class="btn-small indigo white-text ml-6 font-2">Unlike<i class="fa-solid fa-thumbs-down ml-2 center-align"></i></a>
+                          {% else %}
+                          <a href="{{ url_for('like_pet', pet_id=pet['_id']) }}" class="btn-small indigo white-text ml-6 font-2">Like<i class="fa-solid fa-thumbs-up ml-2 center-align"></i></a>
+                          {% endif %}
+                      {% endif %}
+                  </div>
+              </div>
+              </div>
+              </div>
+            </div>
+        </div>
     </div>
-{% endblock %}
+    <!-- Modal Structure -->
+    <div id="modal{{ pet['_id'] }}" class="modal">
+      <div class="modal-content">
+        <h4>{{ pet['pet_name'] }}</h4>
+        <img src="{{ pet['image_url'] }}" alt="{{ pet['pet_name'] }}" class="responsive-img">
+      </div>
+      <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+      </div>
+  </div>
+    {% endfor %}
+  </div>
+  
+  {% endblock %}
+  
