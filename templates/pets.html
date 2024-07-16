@@ -24,10 +24,10 @@
           <div class="card-content">
             <div class="row">
                 <div class="col s10 card-content-text">
-                <p class="mb-2"><strong>Breed:</strong> {{ pet.pet.pet_breed }}</p>
-                <p class="mb-2"><strong>Age:</strong> {{ pet.pet.pet_age }} years old</p>
-                <p class="mb-2"><strong>Character:</strong> {{ pet.pet.pet_character }}</p>
-                <p class="mb-4"><strong>Owner:</strong> {{ pet.pet.owner }}</p>
+                <p class="mb-2 main-text-color"><strong>Breed:</strong> {{ pet.pet.pet_breed }}</p>
+                <p class="mb-2 main-text-color"><strong>Age:</strong> {{ pet.pet.pet_age }} years old</p>
+                <p class="mb-2 main-text-color"><strong>Character:</strong> {{ pet.pet.pet_character }}</p>
+                <p class="mb-4 main-text-color"><strong>Owner:</strong> {{ pet.pet.owner }}</p>
                 {% if session.user %}
                     {% if session.user|lower == pet.pet.owner|lower %}
                     <div class="card-action flex-container mb-4">

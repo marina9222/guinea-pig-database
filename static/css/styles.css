@@ -91,6 +91,15 @@ li:hover {
     margin-left: 15px;
 }
 
+.main-text-color {
+  color :var(--text-color);
+}
+
+.secondary-text-color {
+  color: var(--secondary-text-color);
+}
+
+
 .font {
     font-family: "Montserrat",sans-serif;
     font-size: 1.2rem;
