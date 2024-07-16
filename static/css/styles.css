@@ -95,10 +95,12 @@ li:hover {
     font-family: "Montserrat",sans-serif;
     font-size: 1.2rem;
     text-transform: uppercase;
+    color: var(--text-color);
 }
 .font-2 {
     font-family: "Roboto",sans-serif;
     text-transform: uppercase;
+    color: var(--secondary-text-color);
     
 }
 
