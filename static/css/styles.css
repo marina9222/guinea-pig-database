@@ -8,7 +8,17 @@
 }
 
 body{
-    background-color: #e7d3c3;
+    background-color: var(--secondary-color);
+
+
+}
+
+:root {
+  --main-color: #c6b6a7;
+  --secondary-color: #e7d3c3;
+  --tertiery-color: #d7b3a1;
+  --text-color: #342719;
+  --secondary-text-color:#000000;
 
 }
 
@@ -23,7 +33,7 @@ html, body {
     flex: 1;
   }
   .main-text-color {
-    color:#342719 !important; 
+    color:var(--text-color) !important; 
   }
  .sidenav-close {
     cursor: pointer;
@@ -45,7 +55,7 @@ nav ul a:hover {
 }
 
 li:hover {
-    border-bottom: 3px solid #342719;
+    border-bottom: 3px solid var(--text-color);
   }
 
 
@@ -65,7 +75,7 @@ li:hover {
 }
 
 .nav-wrapper{
-   background-color: #c6b6a7;
+   background-color: var(--main-color);
 }
 
 
@@ -74,7 +84,7 @@ li:hover {
 }
 
 .sidenav{
-    background-color:#c6b6a7 ;
+    background-color:var(--main-color);
 }
 
 .btn-small {
@@ -98,7 +108,7 @@ li:hover {
     height: 100%;
     box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.2);
     transition:0.3s;
-    background-color:#d7b3a1;
+    background-color:var(--tertiery-color);
   }
   
   .card-content-text {
@@ -188,7 +198,7 @@ li:hover {
     color: black !important;
     font-family: "Roboto",sans-serif;
     font-weight: 600 !important;
-    background-color: #d7b3a1; 
+    background-color: var(--tertiery-color); 
     padding: 5px 5px 2px 20px !important;
     display: inline-block; 
 
@@ -210,7 +220,7 @@ li:hover {
   }
 
   .card-panel {
-    background-color: #d7b3a1;
+    background-color:  var(--tertiery-color);
   }
 
   .transparent-input {
@@ -220,11 +230,11 @@ li:hover {
 }
 
 .input-field input, .input-field textarea {
-  background-color: #d7b3a1 !important;
+  background-color: var(--tertiery-color) !important;
 }
 
 .dropdown-content li>a, .dropdown-content li>span {
-  color:black !important;
+  color:var(--secondary-text-color) !important;
 }
 
 .file-label {
@@ -268,7 +278,7 @@ li:hover {
 
 
 footer{
-    background-color: #c6b6a7;
+    background-color: var(--main-color);
 }
 
 .page-footer {
