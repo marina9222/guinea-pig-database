@@ -7,21 +7,21 @@
   <form class="col s12" action="{{ url_for('add_pet') }}" method="POST"  enctype="multipart/form-data">
 
     <!-- Pet name input -->
-    <div class="row margin-b">
+    <div class="row mb-4">
       <div class="input-field col s12">
         <input id="pet_name" name="pet_name" type="text" class="validate transparent-input" minlength="3" maxlength="15">
         <label for="pet_name" class="form-text">Pet Name:</label>
       </div>
     </div>
     <!-- Pet age input -->
-    <div class="row margin-b">
+    <div class="row mb-4">
       <div class="input-field col s12">
         <input id="pet_age" name="pet_age" type="number" class="validate transparent-input" min="0">
         <label for="pet_age" class="form-text">Age:</label>
       </div>
     </div>
     <!-- Pet breed category -->
-    <div class="row margin-b">
+    <div class="row mb-4">
       <div class="input-field col s12">
         <select id="pet_breed" name="pet_breed" class="validate transparent-input" required>
           <option value="" disabled selected >Choose your option</option>
@@ -33,7 +33,7 @@
       </div>
     </div>
     <!-- Pet character description -->
-    <div class="row margin-b">
+    <div class="row mb-4">
       <div class="input-field col s12">
         <textarea id="pet_character" name="pet_character" class="materialize-textarea validate transparent-input" placeholder="Type piggy's character"
           minlength="5" maxlength="50"></textarea>
@@ -43,7 +43,7 @@
 
     <!-- Pet Photo Upload -->
 
-    <div class="row margin-b">
+    <div class="row mb-4">
       <div class="input-field col s12">
         <input type="file" name="pet_image" id="pet_image" class="validate transparent-input file-label" required>
         <label for="pet_image" class="form-text">Upload Pet Image:</label>
@@ -53,8 +53,8 @@
     <!-- Submit button -->
     <div class="row">
       <div class="col s12 center-align">
-        <button class="btn-large white-text indigo font-2 mb-4 " type="submit">
-          Add Pet<i class="fas fa-plus-square margin-l"></i>
+        <button class="btn-large white-text btn-color font-2 mb-4 " type="submit">
+          Add Pet<i class="fas fa-plus-square ml-2"></i>
         </button>
       </div>
     </div>

@@ -1,25 +1,25 @@
 {% extends "index.html" %}
 {% block content %}
 
-<h3 class="indigo-text center-align">My Pets</h3>
+<h3 class="black-text center-align">My Pets</h3>
 
 <div class="row">
     {% if pets %}
         {% for pet in pets %}
-        <div class="col s12 m4 l3">
-            <div class="card small center-align">
+        <div class="col s12 m3">
+            <div class="card center-align">
                 <div class="card-image">
-                    <img src="{{ pet.image_url }}" alt="{{ pet.pet_name }}" class="responsive-img custom-img">
-                    <span class="card-title">{{ pet.pet_name }}</span>
+                    <img src="{{ pet.image_url }}" alt="{{ pet.pet_name }}" class="custom-img">
+                    <span class="card-title black-text">{{ pet.pet_name }}</span>
                 </div>
                 <div class="card-content">
-                    <p class="">Age: {{ pet.pet_age }} years old</p>
-                    <p>Character: {{ pet.pet_character }}</p>
-                    <p>Breed: {{ pet.pet_breed }}</p>
+                    <p class="mb-2 main-text-color"><strong>Age:</strong> {{ pet.pet_age }} years old</p>
+                    <p class="mb-2 main-text-color"><strong>Character:</strong> {{ pet.pet_character }}</p>
+                    <p class="mb-2 main-text-color"><strong>Breed:</strong> {{ pet.pet_breed }}</p>
                 </div>
                 <div class="card-action">
-                    <a href="{{ url_for('edit_pet', pet_id=pet._id) }}" class="btn indigo">Edit</a>
-                    <a href="{{ url_for('delete_pet', pet_id=pet._id) }}" class="btn indigo modal-trigger" data-target="deleteModal{{ pet._id }}">Delete</a>
+                    <a href="{{ url_for('edit_pet', pet_id=pet._id) }}" class="btn white-text btn-color mb-4 font-2">Edit</a>
+                    <a href="{{ url_for('delete_pet', pet_id=pet._id) }}" class="btn red white-text modal-trigger mb-4 font-2" data-target="deleteModal{{ pet._id }}">Delete</a>
                 </div>
             </div>
         </div>

@@ -41,9 +41,9 @@
                         <p class="text-bold">Likes: {{ pet['likes'] }}</p>
                       {% if session.user %}
                        {% if pet.liked %}
-                       <a href="{{ url_for('unlike_pet', pet_id=pet['_id']) }}" class="btn-small indigo white-text ml-6 font-2">Unlike<i class="fa-solid fa-thumbs-down ml-2 center-align"></i></a>
+                       <a href="{{ url_for('unlike_pet', pet_id=pet['_id']) }}" class="btn-small btn-color white-text ml-6 font-2">Unlike<i class="fa-solid fa-thumbs-down ml-2 center-align"></i></a>
                           {% else %}
-                          <a href="{{ url_for('like_pet', pet_id=pet['_id']) }}" class="btn-small indigo white-text ml-6 font-2">Like<i class="fa-solid fa-thumbs-up ml-2 center-align"></i></a>
+                          <a href="{{ url_for('like_pet', pet_id=pet['_id']) }}" class="btn-small btn-color white-text ml-6 font-2">Like<i class="fa-solid fa-thumbs-up ml-2 center-align"></i></a>
                           {% endif %}
                       {% endif %}
                   </div>

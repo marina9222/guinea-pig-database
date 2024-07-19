@@ -7,21 +7,21 @@
   <form class="col s12" action="{{ url_for('edit_pet',pet_id=pet._id) }}" method="POST"  enctype="multipart/form-data">
 
     <!-- Pet name input -->
-    <div class="row margin-b">
+    <div class="row mb-4">
       <div class="input-field col s12">
         <input id="pet_name" name="pet_name" type="text" class="validate" minlength="3" maxlength="15" value="{{ pet.pet_name }}">
         <label for="pet_name">Pet Name:</label>
       </div>
     </div>
     <!-- Pet age input -->
-    <div class="row margin-b">
+    <div class="row mb-4">
       <div class="input-field col s12">
         <input id="pet_age" name="pet_age" type="number" class="validate" min="0" value="{{ pet.pet_age }}">
         <label for="pet_age">Age:</label>
       </div>
     </div>
     <!-- Pet breed category -->
-    <div class="row margin-b">
+    <div class="row mb-4">
       <div class="input-field col s12">
         <select id="pet_breed" name="pet_breed" class="validate" required>
           <option value="" disabled >Choose your option</option>
@@ -38,7 +38,7 @@
       </div>
     </div>
     <!-- Pet character description -->
-    <div class="row margin-b">
+    <div class="row mb-4">
       <div class="input-field col s12">
         <textarea id="pet_character" name="pet_character" class="materialize-textarea validate" placeholder="Type piggy's character"
           minlength="5" maxlength="50">
@@ -50,7 +50,7 @@
 
     <!-- Pet Photo Upload -->
 
-    <div class="row margin-b">
+    <div class="row mb-4">
       <div class="input-field col s12">
         <input type="file" name="pet_image" id="pet_image" class="validate">
         <label for="pet_image">Upload Pet Image:</label>
@@ -61,11 +61,11 @@
     <div class="row">
       <div class="col s12 center-align">
          <!-- Cancel button -->
-          <a href="{{ url_for('my_pets') }}" class="btn-large light-blue lighten-5 indigo-text">
-            Cancel<i class="fas fa-times-circle margin-l"></i>
+          <a href="{{ url_for('my_pets') }}" class="btn-large btn-color white-text font-2">
+            Cancel<i class="fas fa-times-circle ml-2"></i>
           </a>
-        <button class="btn-large light-blue lighten-5 indigo-text" type="submit">
-         Edit Pet<i class="fas fa-edit margin-l"></i>
+        <button class="btn-large btn-color white-text font-2" type="submit">
+         Edit Pet<i class="fas fa-edit ml-2"></i>
         </button>
       </div>
     </div>
