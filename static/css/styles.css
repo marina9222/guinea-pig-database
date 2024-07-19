@@ -228,6 +228,8 @@ li:hover {
   .breed-img {
     width:100% !important;
     height: 150px !important;
+    padding: 10px 30px 10px 30px;
+   
   }
 
   .card-panel {
