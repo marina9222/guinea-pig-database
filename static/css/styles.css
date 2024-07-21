@@ -150,6 +150,11 @@ li:hover {
 
   }
 
+.card-panel{
+    max-width: 1200px;
+  }
+
+
 .card:hover{
   transition:0.3s;
   box-shadow: 8px 8px 16px 0 rgba(0,0,0,0.2),-8px -8px 16px 0 rgba(0,0,0,0.2);
@@ -372,7 +377,16 @@ footer{
         padding: 20px 50px 20px 50px;
        
       }
-    
+
+    .delete-modal {
+      width: 250px;
+
+      }
+    .modal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 }
 
 
