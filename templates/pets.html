@@ -39,6 +39,7 @@
                 <div class="col s2 card-content-text">
                     <div class="like-container">
                     <p class="text-bold main-text-color">Likes: {{pet.likes}}</p>
+                    
                     {% if session.user %}
                      {% if pet.liked %}
                             <a href="{{ url_for('unlike_pet', pet_id=pet.pet._id) }}" class="btn-small btn-color white-text ml-6 font-2">Unlike<i class="fa-solid fa-thumbs-down ml-2 center-align"></i></a>
@@ -46,6 +47,7 @@
                             <a href="{{ url_for('like_pet', pet_id=pet.pet._id) }}" class="btn-small btn-color white-text ml-6 font-2">Like<i class="fa-solid fa-thumbs-up ml-2 center-align"></i></a>
                         {% endif %}
                     {% endif %}
+                
                 </div>
             </div>
             </div>
