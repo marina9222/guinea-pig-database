@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 {% block content %}
 
-<h2 class="center-align font-2 mb-6">{{ breed.pet_breed }}</h2>
+<h2 class="center-align font-2 mb-6 black-text">{{ breed.pet_breed }}</h2>
 <div class="center-align">
     <p class="center-align font mb-6 main-text-color">{{ breed.info }}</p>
 </div>
@@ -24,21 +24,21 @@
             <div class="card-content">
               <div class="row">
                   <div class="col s10 card-content-text">
-                    <p class="mb-2"><strong>Breed:</strong> {{ pet['pet_breed'] }}</p>
-                        <p class="mb-2"><strong>Age:</strong> {{ pet['pet_age'] }} years old</p>
-                        <p class="mb-2"><strong>Character:</strong> {{ pet['pet_character'] }}</p>
-                        <p class="mb-4"><strong>Owner:</strong> {{ pet['owner'] }}</p>
+                    <p class="mb-2 main-text-color"><strong>Breed:</strong> {{ pet['pet_breed'] }}</p>
+                        <p class="mb-2 main-text-color"><strong>Age:</strong> {{ pet['pet_age'] }} years old</p>
+                        <p class="mb-2 main-text-color"><strong>Character:</strong> {{ pet['pet_character'] }}</p>
+                        <p class="mb-4 main-text-color"><strong>Owner:</strong> {{ pet['owner'] }}</p>
                   {% if session.user %}
                       {% if session.user|lower == pet['owner']|lower %}
                       <div class="card-action flex-container mb-4">
-                        <a href="{{ url_for('edit_pet', pet_id=pet['_id']) }}" class="btn-small indigo flex-item white-text font-2">Edit Pet</a>
+                        <a href="{{ url_for('edit_pet', pet_id=pet['_id']) }}" class="btn-small btn-color flex-item white-text font-2">Edit Pet</a>
                         <a href="{{ url_for('delete_pet', pet_id=pet['_id']) }}" class="btn-small red flex-item white-text font-2">Delete Pet</a>
                       </div>
                       {% endif %}
                   {% endif %}
                   <div class="col s2 card-content-text">
                       <div class="like-container">
-                        <p class="text-bold">Likes: {{ pet['likes'] }}</p>
+                        <p class="text-bold main-text-color">Likes: {{ pet['likes'] }}</p>
                       {% if session.user %}
                        {% if pet.liked %}
                        <a href="{{ url_for('unlike_pet', pet_id=pet['_id']) }}" class="btn-small btn-color white-text ml-6 font-2">Unlike<i class="fa-solid fa-thumbs-down ml-2 center-align"></i></a>
@@ -60,7 +60,7 @@
         <img src="{{ pet['image_url'] }}" alt="{{ pet['pet_name'] }}" class="responsive-img">
       </div>
       <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat btn-color">Close</a>
       </div>
   </div>
     {% endfor %}
