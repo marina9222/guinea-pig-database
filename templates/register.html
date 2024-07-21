@@ -3,7 +3,7 @@
 
 
 
-<h3 class="center-align">Register</h3>
+<h3 class="center-align black-text">Register</h3>
 <div class="row">
     <form class="s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
       <div class="card-panel z-depth-3">
@@ -13,7 +13,7 @@
             <div class="input-field col s12">
                 <i class="fas fa-user-plus prefix icon-color"></i>
                 <input id="username" name="username" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$"  class="validate" required>
-                <label for="username" class="form-text">Username</label>
+                <label for="username" class="form-text main-text-color">Username</label>
               </div>
         </div>
 
@@ -22,14 +22,14 @@
          <div class="input-field col s12">
             <i class="fas fa-user-lock prefix icon-color"></i>
             <input id="password" name ="password" type="password" pattern="^[a-zA-Z0-9]{5,15}$"  minlength="5"  class="validate" placeholder=" " maxlength="15" required>
-            <label for="password" class="form-text">Password:</label>
+            <label for="password" class="form-text main-text-color">Password:</label>
           </div>
         </div>
         <div class="row mb-4">
             <div class="input-field col s12">
                <i class="fas fa-user-lock prefix icon-color"></i>
                <input id="confirm_password" name ="confirm_password" type="password" pattern="^[a-zA-Z0-9]{5,15}$"  minlength="5"  class="validate" placeholder=" " maxlength="15" required>
-               <label for="confirm_password" class="form-text">Confirm Password:</label>
+               <label for="confirm_password" class="form-text main-text-color">Confirm Password:</label>
              </div>
            </div>
         <!-- register -->
@@ -46,7 +46,7 @@
 
   <div class="row">
     <div class="col s12">
-     <p class="center-align">
+     <p class="center-align black-text">
       Already registered? <a href="{{ url_for('login') }}" class="icon-color">Log In</a>
     </p>
     </div>
