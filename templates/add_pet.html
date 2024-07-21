@@ -2,7 +2,7 @@
 {% block content %}
 
 
-<h3 class="center-align">Add a New Pet</h3>
+<h3 class="center-align black-text">Add a New Pet</h3>
 <div class="row card-panel z-depth-3">
   <form class="col s12" action="{{ url_for('add_pet') }}" method="POST"  enctype="multipart/form-data">
 
@@ -10,14 +10,14 @@
     <div class="row mb-4">
       <div class="input-field col s12">
         <input id="pet_name" name="pet_name" type="text" class="validate transparent-input" minlength="3" maxlength="15">
-        <label for="pet_name" class="form-text">Pet Name:</label>
+        <label for="pet_name" class="form-text main-text-color">Pet Name:</label>
       </div>
     </div>
     <!-- Pet age input -->
     <div class="row mb-4">
       <div class="input-field col s12">
         <input id="pet_age" name="pet_age" type="number" class="validate transparent-input" min="0">
-        <label for="pet_age" class="form-text">Age:</label>
+        <label for="pet_age" class="form-text main-text-color">Age:</label>
       </div>
     </div>
     <!-- Pet breed category -->
@@ -29,7 +29,7 @@
           <option value="{{ breed.pet_breed}}" class="transparent-input">{{ breed.pet_breed}}</option>
           {% endfor %}
         </select>
-        <label for="form-select-1" class="form-text">Pet Breed:</label>
+        <label for="form-select-1" class="form-text main-text-color">Pet Breed:</label>
       </div>
     </div>
     <!-- Pet character description -->
@@ -37,7 +37,7 @@
       <div class="input-field col s12">
         <textarea id="pet_character" name="pet_character" class="materialize-textarea validate transparent-input" placeholder="Type piggy's character"
           minlength="5" maxlength="50"></textarea>
-        <label for="pet_character" class="form-text">Pet Character:</label>
+        <label for="pet_character" class="form-text main-text-color">Pet Character:</label>
       </div>
     </div>
 
@@ -46,7 +46,7 @@
     <div class="row mb-4">
       <div class="input-field col s12">
         <input type="file" name="pet_image" id="pet_image" class="validate transparent-input file-label" required>
-        <label for="pet_image" class="form-text">Upload Pet Image:</label>
+        <label for="pet_image" class="form-text main-text-color">Upload Pet Image:</label>
       </div>
     </div>
 

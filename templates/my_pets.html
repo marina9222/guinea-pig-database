@@ -10,7 +10,7 @@
             <div class="card center-align">
                 <div class="card-image">
                     <img src="{{ pet.image_url }}" alt="{{ pet.pet_name }}" class="custom-img">
-                    <span class="card-title black-text">{{ pet.pet_name }}</span>
+                    <span class="card-title black-text center-align">{{ pet.pet_name }}</span>
                 </div>
                 <div class="card-content">
                     <p class="mb-2 main-text-color"><strong>Age:</strong> {{ pet.pet_age }} years old</p>
@@ -33,7 +33,7 @@
             <div class="modal-footer">
                 <form action="{{ url_for('delete_pet', pet_id=pet._id) }}" method="POST">
                     <input type="hidden" name="confirm_delete" value="yes">
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat btn-small  white-text font-2 grey lighten-2">Cancel</a>
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat btn-small  white-text font-2 btn-color">Cancel</a>
                     <button type="submit" class="modal-close waves-effect waves-green btn-flat red btn-small white-text font-2">Delete</button>
                 </form>
             </div>
