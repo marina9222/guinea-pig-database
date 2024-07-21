@@ -37,13 +37,14 @@ cloudinary.config(
 @app.route("/")
 @app.route("/get_pets")
 def get_pets():
+    # Fetch all pets from the database
     all_pets = list(mongo.db.pets.find())
     if "user" in session:
         user = mongo.db.users.find_one({"username": session["user"]})
         liked_pets = user.get("liked_pets", [])
     else:
         liked_pets = []
-
+    # Fetch likes for all pets from all users
     all_users = list(mongo.db.users.find({}, {"liked_pets": 1}))
     pet_likes = defaultdict(int)
     for user in all_users:
@@ -57,7 +58,7 @@ def get_pets():
         liked = pet_id in liked_pets
         likes = pet_likes[pet_id]
         pets.append({"pet": pet, "liked": liked, "likes": likes})
-
+    # Sort pets by the number of likes
     pets = sorted(pets, key=lambda x: x["likes"], reverse=True)
     return render_template('pets.html', pets=pets)
 
