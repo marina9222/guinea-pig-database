@@ -251,7 +251,11 @@ li:hover {
 }
 
 .input-field input {
-  color: var(--secondary-text-color);
+  color: var(--secondary-text-color) !important;
+}
+
+.input-field {
+  border-bottom: 2px var(--secondary-text-color);
 }
 
 .dropdown-content li>a, .dropdown-content li>span {
@@ -302,8 +306,6 @@ textarea::placeholder {
   padding: 10px 30px 10px 30px;
  
 }
-
-
 
 /* Modals */
 
@@ -362,9 +364,15 @@ footer{
         max-height: 50px;
       }
     
-      li:hover {
+    li:hover {
         border-bottom: none;
       }
+
+    .breed-img {
+        padding: 20px 50px 20px 50px;
+       
+      }
+    
 }
 
 
