@@ -1,66 +1,83 @@
 {% extends "index.html" %}
+
 {% block content %}
 
-
-<h3 class="center-align black-text mb-6">Add a New Pet</h3>
-<div class="row card-panel z-depth-3">
-  <form class="col s12" action="{{ url_for('add_pet') }}" method="POST"  enctype="multipart/form-data">
-
-    <!-- Pet name input -->
-    <div class="row mb-4">
-      <div class="input-field col s12">
-        <input id="pet_name" name="pet_name" type="text" class="validate transparent-input" minlength="3" maxlength="15">
-        <label for="pet_name" class="form-text main-text-color">Pet Name:</label>
-      </div>
-    </div>
-    <!-- Pet age input -->
-    <div class="row mb-4">
-      <div class="input-field col s12">
-        <input id="pet_age" name="pet_age" type="number" class="validate transparent-input" min="0">
-        <label for="pet_age" class="form-text main-text-color">Age:</label>
-      </div>
-    </div>
-    <!-- Pet breed category -->
-    <div class="row mb-4">
-      <div class="input-field col s12">
-        <select id="pet_breed" name="pet_breed" class="validate transparent-input" required>
-          <option value="" disabled selected >Choose your option</option>
-          {% for breed in breeds %}
-          <option value="{{ breed.pet_breed}}" class="transparent-input">{{ breed.pet_breed}}</option>
-          {% endfor %}
-        </select>
-        <label for="form-select-1" class="form-text main-text-color">Pet Breed:</label>
-      </div>
-    </div>
-    <!-- Pet character description -->
-    <div class="row mb-4">
-      <div class="input-field col s12">
-        <textarea id="pet_character" name="pet_character" class="materialize-textarea validate transparent-input" placeholder="Type piggy's character"
-          minlength="5" maxlength="50"></textarea>
-        <label for="pet_character" class="form-text main-text-color">Pet Character:</label>
-      </div>
-    </div>
-
-    <!-- Pet Photo Upload -->
-
-    <div class="row mb-4">
-      <div class="input-field col s12">
-        <input type="file" name="pet_image" id="pet_image" class="validate transparent-input file-label" required>
-        <label for="pet_image" class="form-text main-text-color">Upload Pet Image:</label>
-      </div>
-    </div>
-
-    <!-- Submit button -->
-    <div class="row">
-      <div class="col s12 center-align">
-        <button class="btn-large white-text btn-color font-2 mb-4 " type="submit">
-          Add Pet<i class="fas fa-plus-square ml-2"></i>
-        </button>
-      </div>
-    </div>
-
-
-
-  </form>
+<div class="row my-3">
+	<div class="col mx-auto text-center">
+		<h2 class="fs-1 text-dark">Add a New Pet</h2>
+	</div>
 </div>
+
+<div class="row">
+	<form class="col-12 col-md-6 mx-auto" method="POST" action="{{ url_for('add_pet') }}" enctype="multipart/form-data">
+		<div class="card p-3 shadow rounded">
+			<!-- Pet name input -->
+			<div class="input-group mb-3">
+				<span class="input-group-text bg-secondary bg-opacity-25 d-none d-md-flex">
+                    <i class="fas fa-signature icon-color fa-fw"></i>
+				</span>
+				<div class="form-floating flex-grow-1">
+					<input type="text" name="pet_name" id="pet_name" class="form-control bg-secondary bg-opacity-10" minlength="3" maxlength="20" pattern="^[a-zA-Z\-\s]{3,20}$" placeholder="Pet Name" required>
+					<label for="pet_name" class="form-text main-text-color">* Pet Name</label>
+				</div>
+			</div>
+	
+			<!-- Pet age input -->
+			<div class="input-group mb-3">
+				<span class="input-group-text bg-secondary bg-opacity-25 d-none d-md-flex">
+                    <i class="fas fa-birthday-cake icon-color fa-fw"></i>
+				</span>
+				<div class="form-floating flex-grow-1">
+					<input type="number" name="pet_age" id="pet_age" class="form-control bg-secondary bg-opacity-10" min="0" pattern="^[0-9]{5,15}$" placeholder="Pet Age" required>
+					<label for="pet_age" class="form-text main-text-color">* Pet Age</label>
+				</div>
+			</div>
+
+            <!-- Pet breed category -->
+            <div class="input-group mb-3">
+				<label for="pet_breed" class="input-group-text bg-secondary bg-opacity-25 d-none d-md-flex">
+                    <i class="fas fa-paw icon-color fa-fw"></i>
+				</label>
+                <select class="form-select form-select-lg form-text mt-0 bg-secondary bg-opacity-10" id="pet_breed" name="pet_breed" required>
+                    <option value="" disabled selected>Choose Breed</option>
+                    {% for breed in breeds %}
+                        <option value="{{ breed.pet_breed}}">{{ breed.pet_breed }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Pet character description -->
+			<div class="input-group mb-3">
+				<span class="input-group-text bg-secondary bg-opacity-25 d-none d-md-flex">
+                    <i class="fas fa-quote-left icon-color fa-fw"></i>
+				</span>
+				<div class="form-floating flex-grow-1">
+                    <textarea class="form-control bg-secondary bg-opacity-10" id="pet_character" name="pet_character" placeholder="Type piggy's character" minlength="5" maxlength="50" required></textarea>
+					<label for="pet_character" class="form-text main-text-color">* Pet Character</label>
+				</div>
+			</div>
+
+            <!-- Pet Photo Upload -->
+            <div class="input-group mb-3">
+                <label for="pet_image" class="input-group-text bg-secondary bg-opacity-25 text-dark d-none d-md-flex">
+                    <i class="fas fa-image icon-color fa-fw"></i>
+                </label>
+                <input type="file" name="pet_image" accept="image/*" class="d-none" id="pet_image">
+                <label for="pet_image" class="input-group-text bg-secondary bg-opacity-25 text-dark">Choose</label>
+                <label for="pet_image" class="form-control input-group-text bg-secondary bg-opacity-10">* Upload Pet Image</label>
+            </div>
+
+			<!-- submit -->
+			<div class="row">
+				<div class="col-12 text-center">
+					<button type="submit" class="btn btn-lg text-white btn-color font-secondary py-3 px-4 mb-2">
+						Add Pet <i class="fas fa-plus-square ms-2"></i>
+					</button>
+				</div>
+			</div>
+
+		</div>
+	</form>
+</div>
+
 {% endblock %}
