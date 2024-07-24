@@ -141,3 +141,21 @@ nav {
 footer {
   background-color: var(--main-color);
 }
+
+/* Media queries */
+@media (min-width: 992px) {
+  .nav-item {
+      margin: 0 1em;
+      padding: unset;
+  }
+  .nav-item:hover {
+      background-color: inherit;
+  }
+  li {
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s ease-in-out;
+  }
+  li:hover {
+      border-bottom: 3px solid var(--text-color-primary);
+  }
+}
