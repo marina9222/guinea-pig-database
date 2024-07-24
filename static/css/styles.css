@@ -137,6 +137,58 @@ nav {
   background-color: var(--tertiery-color);
 }
 
+.text-end {
+  text-align: right !important;
+  font-weight: 700;
+  color: var(--secondary-text-color);
+}
+
+/* Inputs/Forms */
+
+.form-text,
+.form-select,
+.form-select option {
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    color: var(--text-color-primary);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: transparent;
+    box-shadow: unset;
+}
+
+.form-floating>.form-control-plaintext~label::after,
+.form-floating>.form-control:focus~label::after,
+.form-floating>.form-control:not(:placeholder-shown)~label::after,
+.form-floating>.form-select~label::after {
+    background-color: inherit;
+}
+
+.form-floating>label,
+.form-select option {
+    color: var(--text-color-primary);
+}
+
+.input-group-text,
+.form-floating input,
+.form-select,
+.form-control {
+    box-shadow: unset;
+    border-color: var(--tertiery-color);
+}
+
+.form-select,
+.form-select option {
+    background-color: var(--tertiery-color);
+}
+
+select#pet_breed {
+    font-size: 1rem;
+    color: var(--text-color-primary);
+}
+
 /* Footer */
 footer {
   background-color: var(--main-color);
