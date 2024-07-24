@@ -1,85 +1,136 @@
 {% extends "index.html" %}
 {% block content %}
 
-    
-<h3 class="center-align font-2 mb-6">Welcome to Piggy Profiles & Pics Hub</h3>
+<div class="row my-5">
+	<div class="col text-center">
+		<h2 class="fs-1 text-center font-secondary">Welcome to Piggy Profiles & Pics Hub</h2>
+	</div>
+</div>
 
-<h5 class="center-align font mb-6  main-text-color">Here you can find profiles and pictures of adorable guinea pigs added by their owner!</h5>
-<h5 class="center-align font mb-6 main-text-color">Look for a guinea pig by its <a href="{{ url_for('get_breeds') }}" class="black-text text-bold">breed!</a></h5>
+<div class="row my-3">
+	<div class="col text-center font-primary main-text-color text-uppercase">
+		<p class="fs-5 mb-4">
+			Find profiles and pictures of adorable guinea pigs added by their owner!
+			<br><br>
+			<small>Look for a guinea pig by its <a href="{{ url_for('get_breeds') }}" class="text-dark fw-bold">breed</a>!</small>
+		</p>
+	</div>
+</div>
 
 <div class="row">
-  {% for pet in pets %}
-  <div class="col s12 m3">
-      <div class="card">
-          <a class="modal-trigger" href="#modal{{ pet.pet._id }}">
-          <div class="card-image">
-              {% if pet.pet.image_url %}
-              <img src="{{ pet.pet.image_url }}" alt="{{ pet.pet.pet_name }}" class="custom-img">
-              {% else %}
-              <img src="placeholder.jpg" alt="Placeholder">
-              {% endif %}
-              <span class="card-title">{{ pet.pet.pet_name }}</span>
-          </div>
-          </a>
-          <div class="card-content">
-            <div class="row">
-                <div class="col s10 card-content-text">
-                <p class="mb-2 main-text-color"><strong>Breed:</strong> {{ pet.pet.pet_breed }}</p>
-                <p class="mb-2 main-text-color"><strong>Age:</strong> {{ pet.pet.pet_age }} years old</p>
-                <p class="mb-2 main-text-color"><strong>Character:</strong> {{ pet.pet.pet_character }}</p>
-                <p class="mb-4 main-text-color"><strong>Owner:</strong> {{ pet.pet.owner }}</p>
-                {% if session.user %}
-                    {% if session.user|lower == pet.pet.owner|lower %}
-                    <div class="card-action flex-container mb-4">
-                        <a href="{{ url_for('edit_pet', pet_id=pet.pet._id) }}" class="btn-small flex-item white-text btn-color font-2">Edit Pet</a>
-                        <a href="{{ url_for('delete_pet', pet_id=pet._id) }}" class="modal-trigger btn-small red flex-item white-text font-2" data-target="deleteModal{{ pet._id }}">Delete Pet</a>
-                    </div>
-                    {% endif %}
-                {% endif %}
-                <div class="col s2 card-content-text">
-                    <div class="like-container">
-                    <p class="text-bold main-text-color">Likes: {{pet.likes}}</p>
-                    
-                    {% if session.user %}
-                     {% if pet.liked %}
-                            <a href="{{ url_for('unlike_pet', pet_id=pet.pet._id) }}" class="btn-small btn-color white-text ml-6 font-2">Unlike<i class="fa-solid fa-thumbs-down ml-2 center-align"></i></a>
-                        {% else %}
-                            <a href="{{ url_for('like_pet', pet_id=pet.pet._id) }}" class="btn-small btn-color white-text ml-6 font-2">Like<i class="fa-solid fa-thumbs-up ml-2 center-align"></i></a>
-                        {% endif %}
-                    {% endif %}
-                
-                </div>
-            </div>
-            </div>
-            </div>
-          </div>
-      </div>
-  </div>
-  <!-- Modal Structure -->
-  <div id="modal{{ pet.pet._id }}" class="modal">
-    <div class="modal-content">
-        <h4>{{ pet.pet.pet_name }}</h4>
-        <img src="{{ pet.pet.image_url }}" alt="{{ pet.pet.pet_name }}" class="responsive-img">
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green white-text btn-flat btn-color">Close</a>
-    </div>
-</div>
- <!-- Delete Modal -->
- <div id="deleteModal{{ pet._id }}" class="modal delete-modal">
-    <div class="modal-content">
-        <h4 class="center-align">Delete Confirmation</h4>
-        <p class="text-bold center-align">Are you sure you want to delete <strong>{{ pet.pet_name }}</strong>?</p>
-    </div>
-    <div class="modal-footer">
-        <form action="{{ url_for('delete_pet', pet_id=pet._id) }}" method="POST" class="delete-form">
-            <input type="hidden" name="confirm_delete" value="yes">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat btn-small  white-text font-2 btn-color">Cancel</a>
-            <button type="submit" class="modal-close waves-effect waves-green btn-flat red btn-small white-text font-2">Delete</button>
-        </form>
-    </div>
-</div>
-  {% endfor %}
+	<div class="col">
+        {% if not pets %}
+            <h2 class="text-danger text-center">
+                We couldn't find any pets.
+            </h2>
+        {% else %}
+			<div class="container-md">
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-3 g-md-5">
+					{% for pet in pets %}
+						<div class="col my-5">
+							<div class="card h-100">
+								<!-- card image -->
+								{% if pet.pet.image_url %}
+									<a href="#!" data-bs-toggle="modal" data-bs-target="#petModal{{ pet.pet._id }}">
+										<img src="{{ pet.pet.image_url }}" alt="{{ pet.pet.pet_name }}" class="card-img-top img-fluid">
+									</a>
+								{% else %}
+									<img src="{{ url_for('static', filename='images/'+pet.pet.pet_breed|replace(' ', '-')|lower+'.png') }}" alt="{{ pet.pet.pet_name }}" class="card-img-top img-fluid">
+								{% endif %}
+								<!-- card body -->
+								<div class="card-body">
+									<div class="row row-cols-2">
+										<div class="col">
+											<h5 class="card-title fs-3">{{ pet.pet.pet_name }}</h5>
+										</div>
+										<div class="col text-end">
+											{% if session.user %}
+												{% if pet.liked %}
+													<!-- like/unlike buttons for authenticated users -->
+													<a href="{{ url_for('unlike_pet', pet_id=pet.pet._id) }}" class="btn btn-sm btn-danger text-white">
+														Unlike <i class="fa-solid fa-thumbs-down ms-2"></i>
+													</a>
+												{% else %}
+													<a href="{{ url_for('like_pet', pet_id=pet.pet._id) }}" class="btn btn-sm btn-success text-white">
+														Like <i class="fa-solid fa-thumbs-up ms-2"></i>
+													</a>
+												{% endif %}
+												<!-- number of likes -->
+												<div class="row text-muted">
+													<div class="col text-end">
+														<em>Likes:</em> {{ pet.likes }}
+													</div>
+												</div>
+											{% endif %}
+										</div>
+									</div>
+									<!-- pet details -->
+									<p class="card-text main-text-color">
+										<strong>Breed:</strong> {{ pet.pet.pet_breed }}<br>
+										<strong>Age:</strong> {{ pet.pet.pet_age }} years old<br>
+										<strong>Character:</strong> {{ pet.pet.pet_character }}<br>
+										<strong>Owner:</strong> {{ pet.pet.owner }}
+									</p>
+								</div>
+								{% if session.user %}
+									{% if session.user|lower == pet.pet.owner|lower %}
+										<!-- pet owner buttons -->
+										<div class="card-footer">
+											<div class="row row-cols-2 mt-3">
+												<div class="col">
+													<a href="{{ url_for('edit_pet', pet_id=pet.pet._id) }}" class="btn btn-sm text-white btn-color w-100 m-1">Edit</a>
+												</div>
+												<div class="col">
+													<a href="#!" class="btn btn-sm btn-danger text-white w-100 m-1" data-bs-toggle="modal" data-bs-target="#deleteModal{{ pet.pet._id }}">Delete</a>
+												</div>
+											</div>
+										</div>
+
+										<!-- Delete Pet Modal -->
+										<div class="modal fade" id="deleteModal{{ pet.pet._id }}" tabindex="-1" aria-labelledby="deleteModal{{ pet.pet._id }}Label" aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered">
+												<div class="modal-content">
+													<div class="modal-header bg-dark text-white border-0" data-bs-theme="dark">
+														<h5 class="modal-title fs-3" id="deleteModal{{ pet.pet._id }}Label">Delete Confirmation</h5>
+														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+													</div>
+													<div class="modal-body bg-dark text-white border-0">
+														Are you sure you want to delete <strong class="fw-bold fs-6">{{ pet.pet.pet_name }}</strong>?
+													</div>
+													<div class="modal-footer bg-dark text-white border-0">
+														<button type="button" class="btn btn-sm btn-success px-5" data-bs-dismiss="modal">Cancel</button>
+														<a href="{{ url_for('delete_pet', pet_id=pet.pet._id) }}" class="btn btn-sm btn-danger px-5">Delete</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									{% endif %}
+								{% endif %}
+							</div>
+						</div>
+
+						<!-- View Pet Modal -->
+						<div class="modal fade" id="petModal{{ pet.pet._id }}" tabindex="-1" aria-labelledby="petModal{{ pet.pet._id }}Label" aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered">
+								<div class="modal-content">
+									<div class="modal-header bg-dark text-white border-0" data-bs-theme="dark">
+										<h5 class="modal-title fs-3" id="petModal{{ pet.pet._id }}Label">{{ pet.pet.pet_name }}</h5>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body bg-dark border-0">
+										<img src="{{ pet.pet.image_url }}" alt="{{ pet.pet.pet_name }}" class="card-img-top img-fluid">
+									</div>
+									<div class="modal-footer bg-dark border-0">
+										<button type="button" class="btn btn-sm btn-success px-5" data-bs-dismiss="modal">Close</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		{% endif %}
+	</div>
 </div>
 
 {% endblock %}
