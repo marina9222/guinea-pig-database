@@ -1,47 +1,78 @@
 {% extends "index.html" %}
 {% block content %}
 
-<h3 class="black-text center-align mb-6">My Pets</h3>
+<div class="row my-5">
+	<div class="col text-center">
+		<h2 class="fs-1 text-center font-secondary">My Pets</h2>
+	</div>
+</div>
 
 <div class="row">
-    {% if pets %}
-        {% for pet in pets %}
-        <div class="col s12 m3">
-            <div class="card center-align">
-                <div class="card-image">
-                    <img src="{{ pet.image_url }}" alt="{{ pet.pet_name }}" class="custom-img">
-                    <span class="card-title black-text center-align">{{ pet.pet_name }}</span>
-                </div>
-                <div class="card-content">
-                    <p class="mb-2 main-text-color"><strong>Age:</strong> {{ pet.pet_age }} years old</p>
-                    <p class="mb-2 main-text-color"><strong>Character:</strong> {{ pet.pet_character }}</p>
-                    <p class="mb-2 main-text-color"><strong>Breed:</strong> {{ pet.pet_breed }}</p>
-                </div>
-                <div class="card-action">
-                    <a href="{{ url_for('edit_pet', pet_id=pet._id) }}" class="btn white-text btn-color mb-4 font-2">Edit</a>
-                    <a href="{{ url_for('delete_pet', pet_id=pet._id) }}" class="btn red white-text modal-trigger mb-4 font-2" data-target="deleteModal{{ pet._id }}">Delete</a>
-                </div>
-            </div>
-        </div>
+	<div class="col">
+        {% if not pets %}
+            <h2 class="text-danger text-center">
+                You have not added any pets yet.
+            </h2>
+        {% else %}
+            <div class="container-md">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-3 g-md-5">
+                    {% for pet in pets %}
+                        <div class="col my-5">
+                            <div class="card h-100">
+                                <!-- card image -->
+                                {% if pet.image_url %}
+                                    <img src="{{ pet.image_url }}" alt="{{ pet.pet_name }}" class="card-img-top img-fluid">
+                                {% else %}
+                                    <img src="{{ url_for('static', filename='images/'+pet.pet_breed|replace(' ', '-')|lower+'.png') }}" alt="{{ pet.pet_name }}" class="card-img-top img-fluid">
+                                {% endif %}
+                                <!-- card body -->
+                                <div class="card-body">
+                                    <h5 class="card-title fs-3">{{ pet.pet_name }}</h5>
+                                    <!-- pet details -->
+                                    <p class="card-text main-text-color">
+                                        <strong>Breed:</strong> {{ pet.pet_breed }}<br>
+                                        <strong>Age:</strong> {{ pet.pet_age }} years old<br>
+                                        <strong>Character:</strong> {{ pet.pet_character }}<br>
+                                    </p>
+                                </div>
 
-        <!-- Delete Modal -->
-        <div id="deleteModal{{ pet._id }}" class="modal delete-modal">
-            <div class="modal-content">
-                <h4>Delete Confirmation</h4>
-                <p>Are you sure you want to delete <strong>{{ pet.pet_name }}</strong>?</p>
+                                <!-- pet owner buttons -->
+                                <div class="card-footer">
+                                    <div class="row row-cols-2 mt-3">
+                                        <div class="col">
+                                            <a href="{{ url_for('edit_pet', pet_id=pet._id) }}" class="btn btn-sm text-white btn-color w-100 m-1">Edit</a>
+                                        </div>
+                                        <div class="col">
+                                            <a href="#!" class="btn btn-sm btn-danger text-white w-100 m-1" data-bs-toggle="modal" data-bs-target="#deleteModal{{ pet._id }}">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Delete Pet Modal -->
+                                <div class="modal fade" id="deleteModal{{ pet._id }}" tabindex="-1" aria-labelledby="deleteModal{{ pet._id }}Label" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-dark text-white border-0" data-bs-theme="dark">
+                                                <h5 class="modal-title fs-3" id="deleteModal{{ pet._id }}Label">Delete Confirmation</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body bg-dark text-white border-0">
+                                                Are you sure you want to delete <strong class="fw-bold fs-6">{{ pet.pet_name }}</strong>?
+                                            </div>
+                                            <div class="modal-footer bg-dark text-white border-0">
+                                                <button type="button" class="btn btn-sm btn-success px-5" data-bs-dismiss="modal">Cancel</button>
+                                                <a href="{{ url_for('delete_pet', pet_id=pet._id) }}" class="btn btn-sm btn-danger px-5">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
-            <div class="modal-footer">
-                <form action="{{ url_for('delete_pet', pet_id=pet._id) }}" method="POST">
-                    <input type="hidden" name="confirm_delete" value="yes">
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat btn-small  white-text font-2 btn-color">Cancel</a>
-                    <button type="submit" class="modal-close waves-effect waves-green btn-flat red btn-small white-text font-2">Delete</button>
-                </form>
-            </div>
-        </div>
-        {% endfor %}
-    {% else %}
-        <h3 class="indigo-text center-align">You have not added any pets yet.</h3>
-    {% endif %}
+        {% endif %}
+	</div>
 </div>
 
 {% endblock %}
