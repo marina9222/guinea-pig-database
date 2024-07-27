@@ -97,6 +97,9 @@ Home/Logged In
 Add Pet
   - ![screenshot](documentation/wireframes/mobile-add-pet.png)
 
+Edit Pet
+  - ![screenshot](documentation/wireframes/mobile-edit-pet.png)
+
 Breeds
   - ![screenshot](documentation/wireframes/mobile-breeds.png)
 
@@ -115,5 +118,78 @@ Log In
 
 
 </details>
+
+### Tablet Wireframes
+
+<details>
+<summary> Click here to see the Tablet Wireframes </summary>
+
+Home
+  - ![screenshot](documentation/wireframes/tablet-home-1.png)
+
+Home/Logged In
+  - ![screenshot](documentation/wireframes/tablet-home-2.png)
+
+Add Pet
+  - ![screenshot](documentation/wireframes/tablet-add-pet.png)
+
+Edit Pet
+  - ![screenshot](documentation/wireframes/tablet-edit-pet.png)
+
+Breeds
+  - ![screenshot](documentation/wireframes/tablet-breeds.png)
+
+Breed Details
+  - ![screenshot](documentation/wireframes/tablet-breed-details.png)
+
+My Pets
+  - ![screenshot](documentation/wireframes/tablet-my-pets.png)
+
+Register
+  - ![screenshot](documentation/wireframes/tablet-register.png)
+
+Log In
+  - ![screenshot](documentation/wireframes/tablet-log-in.png)
+
+
+</details>
+
+
+### Desktop Wireframes
+
+<details>
+<summary> Click here to see the Desktop Wireframes </summary>
+
+Home
+  - ![screenshot](documentation/wireframes/dekstop-home-1.png)
+
+Home/Logged In
+  - ![screenshot](documentation/wireframes/dekstop-home-2.png)
+
+Add Pet
+  - ![screenshot](documentation/wireframes/dekstop-add-pet.png)
+
+Edit Pet
+  - ![screenshot](documentation/wireframes/dekstop-edit-pet.png)
+
+Breeds
+  - ![screenshot](documentation/wireframes/dekstop-breeds.png)
+
+Breed Details
+  - ![screenshot](documentation/wireframes/dekstop-breed-details.png)
+
+My Pets
+  - ![screenshot](documentation/wireframes/dekstop-my-pets.png)
+
+Register
+  - ![screenshot](documentation/wireframes/dekstop-register.png)
+
+Log In
+  - ![screenshot](documentation/wireframes/dekstop-log-in.png)
+
+
+</details>
+
+
 
 
