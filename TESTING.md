@@ -11,13 +11,13 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 
 | Directory | File | Screenshot | Notes |
 | --- | --- | --- | --- |
-| templates | add_pet.html | ![screenshot](documentation/validation/add-pet-html.png) | |
-| templates | breed_details.html | ![screenshot](documentation/validation/breed-details-html.png) | |
-| templates | breeds.html | ![screenshot](documentation/validation/breeds-html.png) | |
-| templates | edit_pet.html | ![screenshot](documentation/validation/edit-pet-html.png) | |
-| templates | index.html | ![screenshot](documentation/validation/index-html.png) | |
-| templates | login.html | ![screenshot](documentation/validation/login-html.png) | |
-| templates | my_pets.html | ![screenshot](documentation/validation/my-pets-html.png) | |
-| templates | pets.html | ![screenshot](documentation/validation/pets-html.png) | |
-| templates | register.html | ![screenshot](documentation/validation/register-html.png) | |
+| templates | add_pet.html | ![screenshot](documentation/validation/add-pet-html.png) | pass |
+| templates | breed_details.html | ![screenshot](documentation/validation/breed-details-html.png) | pass |
+| templates | breeds.html | ![screenshot](documentation/validation/breeds-html.png) | pass |
+| templates | edit_pet.html | ![screenshot](documentation/validation/edit-pet-html.png) | pass |
+| templates | index.html | ![screenshot](documentation/validation/index-html.png) | pass |
+| templates | login.html | ![screenshot](documentation/validation/login-html.png) | pass |
+| templates | my_pets.html | ![screenshot](documentation/validation/my-pets-html.png) | pass |
+| templates | pets.html | ![screenshot](documentation/validation/pets-html.png) | pass |
+| templates | register.html | ![screenshot](documentation/validation/register-html.png) | pass |
 
