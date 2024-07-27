@@ -21,3 +21,24 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 | templates | pets.html | ![screenshot](documentation/validation/pets-html.png) | pass |
 | templates | register.html | ![screenshot](documentation/validation/register-html.png) | pass |
 
+
+### CSS
+
+I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator) to validate all of my CSS files.
+
+| Directory | File | Screenshot | Notes |
+| --- | --- | --- | --- |
+| static | styles.css | ![screenshot](documentation/validation/css-validation.png) |pass |
+
+### Python
+
+I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com) to validate all of my Python files.
+
+| Directory | File | CI URL | Screenshot | Notes |
+| --- | --- | --- | --- | --- |
+|  | app.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marina9222/guinea-pig-database/main/app.py) | ![screenshot](documentation/validation/python-validation.png) | pass |
+
+
+## Browser Compatibility
+
+
