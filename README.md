@@ -191,5 +191,149 @@ Log In
 </details>
 
 
+## Features
 
 
+### Existing Features
+
+
+- **Register form**
+
+    - Register form for a new user to register and be able to log in and use all the features of the website.
+
+![screenshot](documentation/features/feature01.png)
+
+
+- **Log In form**
+
+    - Log In form for already registered users.
+
+![screenshot](documentation/features/feature02.png)
+
+
+- **Add Pet**
+
+    - Add Pet feature allows a registered user to add their own pet to the database.
+
+![screenshot](documentation/features/feature03.png)
+
+
+- **Find guinea pigs by breed**
+
+    - Help users to quickly find guinea pigs sorted by their breed.
+
+![screenshot](documentation/features/feature04.png)
+
+
+- **Breed information**
+
+    - Showing the user only guinea pigs by the chosen breed and give them some information about the breed.
+
+![screenshot](documentation/features/feature05.png)
+
+
+- **My Pets**
+
+    - Shows only the user's pets so the pet could be edited or deleted if desired.
+
+![screenshot](documentation/features/feature06.png)
+
+
+- **Edit Pet**
+
+    - Allows registered user to edit their pet if desired.
+
+![screenshot](documentation/features/feature07.png)
+
+
+- **Delete Pet**
+
+    - Allows registered user to delete their pet if desired.
+
+![screenshot](documentation/features/feature08.png)
+
+
+- **Unlike Pet**
+
+    - Allows registered user to unlike a pet if liked by mistake.
+
+![screenshot](documentation/features/feature09.png)
+
+
+- **Like Pet**
+
+    - Allows registered user to like a pet from the database.
+
+![screenshot](documentation/features/feature10.png)
+
+
+### Future Features
+
+- Liked pets section
+    - A section showing the registered user only the pets they liked.
+
+- Search bar
+    - Search bar on the home page allowing the user to search for a pet by name/age/breed/likes.
+
+- Notifications
+    - Allow registered user to receive notifications about new added pets by email or pop up.
+
+- Multiple images when adding a new pet
+    - User the be allowed to upload more than one picture of their pet when adding one.
+
+- Images carousel
+    - Carousel showing the images on the home page so it could be easier to go through all of them , instead of scrolling all the way down.
+
+
+## Tools & Technologies Used
+
+- [![Markdown Builder](https://img.shields.io/badge/Markdown_Builder-grey?logo=markdown&logoColor=000000)](https://tim.2bn.dev/markdown-builder) used to generate README and TESTING templates.
+- [![Git](https://img.shields.io/badge/Git-grey?logo=git&logoColor=F05032)](https://git-scm.com) used for version control. (`git add`, `git commit`, `git push`)
+- [![GitHub](https://img.shields.io/badge/GitHub-grey?logo=github&logoColor=181717)](https://github.com) used for secure online code storage.
+- [![Gitpod](https://img.shields.io/badge/Gitpod-grey?logo=gitpod&logoColor=FFAE33)](https://gitpod.io) used as a cloud-based IDE for development.
+- [![HTML](https://img.shields.io/badge/HTML-grey?logo=html5&logoColor=E34F26)](https://en.wikipedia.org/wiki/HTML) used for the main site content.
+- [![CSS](https://img.shields.io/badge/CSS-grey?logo=css3&logoColor=1572B6)](https://en.wikipedia.org/wiki/CSS) used for the main site design and layout.
+- [![Python](https://img.shields.io/badge/Python-grey?logo=python&logoColor=3776AB)](https://www.python.org) used as the back-end programming language.
+- [![Heroku](https://img.shields.io/badge/Heroku-grey?logo=heroku&logoColor=430098)](https://www.heroku.com) used for hosting the deployed back-end site.
+- [![Bootstrap](https://img.shields.io/badge/Bootstrap-grey?logo=bootstrap&logoColor=7952B3)](https://getbootstrap.com) used as the front-end CSS framework for modern responsiveness and pre-built components.
+- [![Flask](https://img.shields.io/badge/Flask-grey?logo=flask&logoColor=000000)](https://flask.palletsprojects.com) used as the Python framework for the site.
+- [![MongoDB](https://img.shields.io/badge/MongoDB-grey?logo=mongodb&logoColor=47A248)](https://www.mongodb.com) used as the non-relational database management with Flask.
+- [![Cloudinary](https://img.shields.io/badge/Cloudinary-grey?logo=cloudinary&logoColor=3448C5)](https://cloudinary.com) used for online static file storage.
+- [![Balsamiq](https://img.shields.io/badge/Balsamiq-grey?logo=barmenia&logoColor=CE0908)](https://balsamiq.com/wireframes) used for creating wireframes.
+- [![Font Awesome](https://img.shields.io/badge/Font_Awesome-grey?logo=fontawesome&logoColor=528DD7)](https://fontawesome.com) used for the icons.
+- [![ChatGPT](https://img.shields.io/badge/ChatGPT-grey?logo=chromatic&logoColor=75A99C)](https://chat.openai.com) used to help debug, troubleshoot, and explain things.
+
+## Database Design
+
+My project uses a non-relational database with MongoDB, and therefore the database architecture
+doesn't have actual relationships like a relational database would.
+
+My database is called **guineaPigsDB**.
+
+It contains 3 collections:
+
+- **breeds**
+    | Key | Type | Notes |
+    | --- | --- | --- |
+    | _id | ObjectId() | |
+    | pet_breed | String | |
+    | info | String | |
+    | breed_image | String | |
+
+- **pets**
+    | Key | Type | Notes |
+    | --- | --- | --- |
+    | _id | ObjectId() | |
+    | pet_name | String | |
+    | pet_age | String | |
+    | pet_breed | String | selected from *breeds* collection |
+    | pet_character | String | |
+    | image_url | String | |
+    | owner | String | selected from the *users* collection |
+
+- **users**
+    | Key | Type | Notes |
+    | --- | --- | --- |
+    | _id | ObjectId() | |
+    | username | String | |
+    | password | String | uses Secure Hash Algorithm (SHA) |
