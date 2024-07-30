@@ -60,3 +60,21 @@ I've tested my deployed project on multiple devices to check for responsiveness 
 | Tablet (DevTools) | ![screenshot](documentation/responsiveness/responsive-tablet-home.png) | ![screenshot](documentation/responsiveness/responsive-tablet-login.png) | ![screenshot](documentation/responsiveness/responsive-tablet-register.png) | ![screenshot](documentation/responsiveness/responsive-tablet-home-2.png) | ![screenshot](documentation/responsiveness/responsive-tablet-add-pet.png) | ![screenshot](documentation/responsiveness/responsive-tablet-breeds.png) | ![screenshot](documentation/responsiveness/responsive-tablet-my-pets.png) | ![screenshot](documentation/responsiveness/responsive-tablet-edit-pet.png) | ![screenshot](documentation/responsiveness/responsive-tablet-breed-details.png) | Works as expected |
 | Desktop | ![screenshot](documentation/responsiveness/responsive-desktop-home.png) | ![screenshot](documentation/responsiveness/responsive-desktop-login.png) | ![screenshot](documentation/responsiveness/responsive-desktop-register.png) | ![screenshot](documentation/responsiveness/responsive-desktop-home-2.png) | ![screenshot](documentation/responsiveness/responsive-desktop-add-pet.png) | ![screenshot](documentation/responsiveness/responsive-desktop-breeds.png) | ![screenshot](documentation/responsiveness/responsive-desktop-my-pets.png) | ![screenshot](documentation/responsiveness/responsive-desktop-edit-pet.png) | ![screenshot](documentation/responsiveness/responsive-desktop-breed-details.png) | Works as expected |
 | Iphone 13 | ![screenshot](documentation/responsiveness/responsive-iphone13-home.png) | ![screenshot](documentation/responsiveness/responsive-iphone13-login.png) | ![screenshot](documentation/responsiveness/responsive-iphone13-register.png) | ![screenshot](documentation/responsiveness/responsive-iphone13-home-2.png) | ![screenshot](documentation/responsiveness/responsive-iphone13-add-pet.png) | ![screenshot](documentation/responsiveness/responsive-iphone13-breeds.png) | ![screenshot](documentation/responsiveness/responsive-iphone13-my-pets.png) | ![screenshot](documentation/responsiveness/responsive-iphone13-edit-pet.png) | ![screenshot](documentation/responsiveness/responsive-iphone13-breed-details.png) | Works as expected |
+
+
+## Lighthouse Audit
+
+I've tested my deployed project using the Lighthouse Audit tool to check for any major issues.
+
+| Page | Mobile | Desktop | Notes |
+| --- | --- | --- | --- |
+| Home | ![screenshot](documentation/lighthouse/lighthouse-home-mobile.png) | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | Some minor warnings |
+| Log In | ![screenshot](documentation/lighthouse/lighthouse-login-mobile.png) | ![screenshot](documentation/lighthouse/lighthouse-login-desktop.png) | Some minor warnings |
+| Register | ![screenshot](documentation/lighthouse/lighthouse-register-mobile.png) | ![screenshot](documentation/lighthouse/lighthouse-register-desktop.png) | Some minor warnings |
+| Home/Logged In | ![screenshot](documentation/lighthouse/lighthouse-home-2-mobile.png) | ![screenshot](documentation/lighthouse/lighthouse-home-2-desktop.png) | Slow load due to large images |
+| Add Pet | ![screenshot](documentation/lighthouse/lighthouse-add-pet-mobile.png) | ![screenshot](documentation/lighthouse/lighthouse-add-pet-desktop.png) | Some minor warnings |
+| Breeds | ![screenshot](documentation/lighthouse/lighthouse-breeds-mobile.png) | ![screenshot](documentation/lighthouse/lighthouse-breeds-desktop.png) | Some minor warnings |
+| My Pets | ![screenshot](documentation/lighthouse/lighthouse-my-pets-mobile.png) | ![screenshot](documentation/lighthouse/lighthouse-my-pets-desktop.png) | Slow load due to large images |
+| Edit Pet | ![screenshot](documentation/lighthouse/lighthouse-edit-pet-mobile.png) | ![screenshot](documentation/lighthouse/lighthouse-edit-pet-desktop.png) | Some minor warnings |
+| Breed Details | ![screenshot](documentation/lighthouse/lighthouse-breed-details-mobile.png) | ![screenshot](documentation/lighthouse/lighthouse-breed-details-desktop.png) | Some minor warnings |
+
