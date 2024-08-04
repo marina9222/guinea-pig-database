@@ -302,6 +302,9 @@ Log In
 - [![Balsamiq](https://img.shields.io/badge/Balsamiq-grey?logo=barmenia&logoColor=CE0908)](https://balsamiq.com/wireframes) used for creating wireframes.
 - [![Font Awesome](https://img.shields.io/badge/Font_Awesome-grey?logo=fontawesome&logoColor=528DD7)](https://fontawesome.com) used for the icons.
 - [![ChatGPT](https://img.shields.io/badge/ChatGPT-grey?logo=chromatic&logoColor=75A99C)](https://chat.openai.com) used to help debug, troubleshoot, and explain things.
+- [![Canva](https://img.shields.io/badge/Canva-grey?logo=canva&logoColor=00C4CC)](https://www.canva.com) used for designing the logo.
+
+
 
 ## Database Design
 
@@ -578,6 +581,8 @@ You can fork this repository by using the following steps:
 | --- | --- | --- | --- |
 | [Guinea Dad](https://guineadad.com/blogs/news/the-complete-list-of-all-guinea-pig-breeds) | breeds | image | breeds images|
 | [Google](https://google.com) | pets images | image | images for most of the pets |
+| [Istockphoto](https://www.istockphoto.com/vector/cavy-icon-gm956818738-261255338) | every page | logo | website logo |
+
 
 
 ### Acknowledgements

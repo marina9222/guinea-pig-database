@@ -78,3 +78,28 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 | Edit Pet | ![screenshot](documentation/lighthouse/lighthouse-edit-pet-mobile.png) | ![screenshot](documentation/lighthouse/lighthouse-edit-pet-desktop.png) | Some minor warnings |
 | Breed Details | ![screenshot](documentation/lighthouse/lighthouse-breed-details-mobile.png) | ![screenshot](documentation/lighthouse/lighthouse-breed-details-desktop.png) | Some minor warnings |
 
+## Defensive Programming
+
+| Page | Expectation | Test | Result | Fix | Screenshot |
+| --- | --- | --- | --- | --- | --- |
+| Register | | | | | |
+| | Feature is expected to open a register form for the user to regiter an account | Tested the feature by doing it | The feature behaved as expected, and it did registered without problems| Test concluded and passed | ![screenshot](documentation/features/feature01.png) |
+| Log In | | | | | |
+| | Feature is expected to sign in the user when the form is filled and the user name and password match | Tested the feature by log in my account | The feature behaved as expected, and it did logged me in | Test concluded and passed | ![screenshot](documentation/features/feature02.png) |
+| Add Pet | | | | | |
+| | Feature is expected to add a new pet owned by the user when the form is filled | Tested the feature by adding a pet | The feature behaved as expected, and it did added the pet | Test concluded and passed | ![screenshot](documentation/features/feature03.png) |
+| Breeds | | | | | |
+| | Feature is expected to do help the user find guinea pigs by breed | Tested the feature by clicking on every breed to check for the pets if they match | The feature behaved as expected, and it did show all the pets by breeds | Test concluded and passed | ![screenshot](documentation/features/feature04.png) |
+| Breed Details | | | | | |
+| | Feature is expected to view the pets from this breed and read some information about the chosen breed | Tested the feature by doing it | The feature behaved as expected, and it did show the pets and the information of every breed | Test concluded and passed | ![screenshot](documentation/features/feature05.png) |
+| My Pets | | | | | |
+| | Feature is expected to show the user only their own pets and if they dont have any to show a message saying: You have not added any pets yet. | Tested the feature by doing it | Feature is expected and shows only my pets | Test concluded and passed | ![screenshot](documentation/features/feature06.png) |
+| Edit Pet | | | | | |
+| | Feature is expected to allow the user to edit their pet by clicking the edit button. | Tested the feature by trying to edit one of my pets. | The feature behaved as expected, and it opened a form to edit my pet. | Test concluded and passed | ![screenshot](documentation/features/feature07.png) |
+| Home/My Pets | | | | | |
+| | Feature is expected to allow the user to delete their own pets if needed. | Tested the feature by trying to delete one of my pets. | The feature behaved as expected, and it deleted my pet. | Test concluded and passed  | ![screenshot](documentation/features/feature08.png) |
+| Home | | | | | |
+| | Feature is expected to allow a registered user to unlike a pet if clicked liked by mistake. | Tested the feature by clicking on unlike button. |  The feature behaved as expected, and it unliked a pet. | Test concluded and passed | ![screenshot](documentation/features/feature09.png) |
+| Home | | | | | |
+| | Feature is expected to allow a registered user to like a pet. | Tested the feature by clicking on like button. | The feature behaved as expected, and it liked the chosen pet. | Test concluded and passed | ![screenshot](documentation/features/feature10.png) |
+
