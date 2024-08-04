@@ -103,3 +103,51 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 | Home | | | | | |
 | | Feature is expected to allow a registered user to like a pet. | Tested the feature by clicking on like button. | The feature behaved as expected, and it liked the chosen pet. | Test concluded and passed | ![screenshot](documentation/features/feature10.png) |
 
+
+## User Story Testing
+
+| User Story | Screenshot |
+| --- | --- |
+| As a new site user, I would like to easily create an account, so that I can log in and browse the guinea pigs profiles. | ![screenshot](documentation/features/feature01.png) |
+| As a new site user, I would like to be able to browse the guinea pig profiles, even without a registration.| ![screenshot](documentation/features/feature11.png) |
+| As a new site user, I would like to add my pet, so that people can see it and like it. | ![screenshot](documentation/features/feature03.png) |
+| As a new site user, I would like to have a like/unlike buttons, so that I can choose which guinea pigs I like and which guinea pigs I don't. | ![screenshot](documentation/features/feature09.png) |
+| As a new site user, I would like to be able to edit my pet, if I make a mistake when adding it the first time or I would like to change its picture. | ![screenshot](documentation/features/feature07.png) |
+| As a new site user, I would like to be able to delete my pet, if I decide to. | ![screenshot](documentation/features/feature08.png) |
+| As a new site user, I would like to have a page with all the guinea pig breeds with some information about each breed and see only the pets from each breed I choose to check. | ![screenshot](documentation/features/feature04.png) |
+| As a returning site user, I would like to have a liked pets section, so that I can see only the pets I liked already. |
+| As a returning site user, I would like to have a search bar available on the home page, so that I can search a guinea pig by name/age/breed etc. | 
+| As a returning site user, I would like to receive notifications if I enable them, so that I can know every time a person adds a new pet. | 
+| As a returning site user, I would like to have the option to add multiple pictures of my guinea pig when adding one instead of only one. | 
+| As a returning site user, I would like to have a carousel with all the pets, so that I can navigate with arrows and don't have to go all the way down the page to see all of them. | 
+
+
+## Bugs
+
+- Python : values for both 'fields' and 'body' error when try to upload picture using Cloudinary
+
+
+    - To fix this, I updated cloudinary with the latest version.
+
+- Python TypeError: 'Collection' object is not callable.
+
+    ![screenshot](documentation/bugs/bug01.png)
+
+    - To fix this, I changed the code line mongo.db.pets.update_one({"_id":ObjectId(pet_id)},submit) to mongo.db.pets.update_one({"_id":ObjectId(pet_id)},{"$set":update_data}).
+
+
+- Python jinja : UndefinedError
+
+    ![screenshot](documentation/bugs/bug02.png)
+
+    - To fix this, I added another pet object so it can access the nested object structure.
+
+- Materialize : Cards bug
+
+    ![screenshot](documentation/bugs/bug03.png)
+
+    - To fix this, I have to transoform my whole project from Materialize to bootstrap as Materialize has a bug in the framework so you actually can't have a responsive layout.
+
+## Unfixed Bugs
+ 
+> There are no remaining bugs that I am aware of.
