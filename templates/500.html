@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+{% block content %}
+
+<!-- Error 500 -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+           <h2 class="fw-bold">
+                <span class="text-danger">500 Error Page: Server Error</span>
+                Guinea Pigs in the Wires!
+                <br>
+                Uh-oh! It seems like some guinea pigs got into the server room and made a mess.
+                <br>
+                We're trying to get things running smoothly again!
+                <a href="{{ url_for('get_pets') }}" class="btn btn-danger">Home</a>
+            </h2>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

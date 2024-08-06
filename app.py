@@ -299,6 +299,19 @@ def unlike_pet(pet_id):
     return redirect(request.referrer or url_for("get_pets"))
 
 
+# ----- 404 ----- #
+@app.errorhandler(404)
+def client_error(error):
+    return render_template("404.html"), 404
+
+
+# ----- 500 ----- #
+@app.errorhandler(500)
+def server_error(error):
+    return render_template("500.html"), 500
+
+    
+
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP"),
