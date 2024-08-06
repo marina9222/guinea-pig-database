@@ -2,16 +2,18 @@
 {% block content %}
 
 <!-- Error 500 -->
-<div class="container-fluid">
-    <div class="row">
-        <div class="col">
-           <h2 class="fw-bold">
+<div class="container-fluid text-center">
+    <div class="row mt-4">
+        <div class="col mt-4">
+           <h2 class="fw-bold mt-4">
                 <span class="text-danger">500 Error Page: Server Error</span>
+                <br>
                 Guinea Pigs in the Wires!
                 <br>
                 Uh-oh! It seems like some guinea pigs got into the server room and made a mess.
                 <br>
                 We're trying to get things running smoothly again!
+                <br>
                 <a href="{{ url_for('get_pets') }}" class="btn btn-danger">Home</a>
             </h2>
         </div>
