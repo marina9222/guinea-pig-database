@@ -133,7 +133,7 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 
     ![screenshot](documentation/bugs/bug01.png)
 
-    - To fix this, I changed the code line / mongo.db.pets.update_one({"_id":ObjectId(pet_id)},submit) to mongo.db.pets.update_one({"_id":ObjectId(pet_id)},{"$set":update_data}) /.
+    - To fix this, I changed the code line `mongo.db.pets.update_one({"_id":ObjectId(pet_id)},submit) to mongo.db.pets.update_one({"_id":ObjectId(pet_id)},{"$set":update_data})`.
 
 
 - Python jinja : UndefinedError
