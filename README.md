@@ -408,12 +408,14 @@ Deployment steps are as follows, after account setup:
 
 | Key | Value |
 | --- | --- |
-| `DATABASE_URL` | user's own value |
 | `IP` | 0.0.0.0 |
+| `PORT` | 5000 |
 | `MONGO_DBNAME` | user's own value |
 | `MONGO_URI` | user's own value |
-| `PORT` | 5000 |
 | `SECRET_KEY` | user's own value |
+| `CLOUDINARY_CLOUD_NAME` | user's own value |
+| `CLOUDINARY_API_KEY` | user's own value |
+| `CLOUDINARY_API_SECRET` | user's own value |
 
 Heroku needs three additional files in order to deploy properly.
 
@@ -462,54 +464,6 @@ For either method, you will need to install any applicable packages found within
 
 - `pip3 install -r requirements.txt`.
 
-If you are using SQLAlchemy for your project, you need to create a local PostgreSQL database.
-In this example, the example database name is **db-name**.
-
-```shell
-workspace (branch) $ set_pg
-workspace (branch) $ psql
-
-... connection to postgres ...
-
-postgres=# CREATE DATABASE db-name;
-CREATE DATABASE
-postgres=# \c db-name;
-You are now connected to database "db-name" as user "foobar".
-db-name=# \q
-```
-
-Once that database is created, you must migrate the database changes from your models.py file.
-This example uses **app-name** for the name of the primary Flask application.
-
-```shell
-workspace (branch) $ python3
-
-... connection to Python CLI ...
-
->>> from app-name import db
->>> db.create_all()
->>> exit()
-```
-
-To confirm that the database table(s) have been created, you can use the following:
-
-```shell
-workspace (branch) $ psql -d db-name
-
-... connection to postgres ...
-
-postgres=# \dt
-
-	List of relations
-Schema | Name | Type | Owner
--------+------+------+--------
-public | blah1 | table | foobar
-public | blah2 | table | foobar
-public | blah3 | table | foobar
-
-db-name=# \q
-```
-
 You will need to create a new file called `env.py` at the root-level,
 and include the same environment variables listed above from the Heroku deployment steps, plus a few extras.
 
@@ -522,43 +476,16 @@ Sample `env.py` file:
 import os
 
 os.environ.setdefault("IP", "0.0.0.0")
+os.environ.setdefault("PORT", "5000")
 os.environ.setdefault("MONGO_DBNAME", "user's own value")
 os.environ.setdefault("MONGO_URI", "user's own value")
-os.environ.setdefault("PORT", "5000")
 os.environ.setdefault("SECRET_KEY", "user's own value")
-
-
-os.environ.setdefault("DB_URL", "user's own value")
+os.environ.setdefault("CLOUDINARY_CLOUD_NAME", "user's own value")
+os.environ.setdefault("CLOUDINARY_API_KEY", "user's own value")
+os.environ.setdefault("CLOUDINARY_API_SECRET", "user's own value")
 os.environ.setdefault("DEBUG", "True")
-os.environ.setdefault("DEVELOPMENT", "True")
 ```
 
-If using Flask-Migrate, make sure to include the following steps as well.
-
-During the course of development, it became necessary to update the PostgreSQL data models.
-In order to do this, [Flask-Migrate](https://flask-migrate.readthedocs.io) was used.
-
-- `pip3 install Flask-Migrate`
-- Import the newly installed package on your main `__init__.py` file:
-	- `from flask_migrate import Migrate`
-- Define **Migrate** in the same file after **app** and **db** are defined:
-	- `migrate = Migrate(app, db)`
-- Initiate the migration changes in the terminal:
-
-```shell
-workspace (branch) $ flask db init
-
-	... generating migrations ...
-
-workspace (branch) $ set_pg
-workspace (branch) $ flask db migrate -m "Add a commit message for this migration"
-
-	... migrating changes ...
-
-workspace (branch) $ flask db upgrade
-
-	... updating database ...
-```
 #### Cloning
 
 You can clone the repository by following these steps:
