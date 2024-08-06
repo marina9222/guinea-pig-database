@@ -546,6 +546,7 @@ You can fork this repository by using the following steps:
 | [Grid Garden](https://cssgridgarden.com) | entire site | modern responsive layouts |
 | [StackOverflow](https://stackoverflow.com/a/2450976) | cloudinary | cloudinaryField attribute values for field and body error  |
 | [Bootstrap](https://getbootstrap.com/) | entire site | responsive layout and components|
+| [Flask + Cloudinary](https://medium.com/@johndavidsimmons/cloudinary-api-in-flask-14018d84a314) | add pet/edit pet | upload pet picture |
 
 ### Media
 

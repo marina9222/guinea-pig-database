@@ -115,11 +115,11 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 | As a new site user, I would like to be able to edit my pet, if I make a mistake when adding it the first time or I would like to change its picture. | ![screenshot](documentation/features/feature07.png) |
 | As a new site user, I would like to be able to delete my pet, if I decide to. | ![screenshot](documentation/features/feature08.png) |
 | As a new site user, I would like to have a page with all the guinea pig breeds with some information about each breed and see only the pets from each breed I choose to check. | ![screenshot](documentation/features/feature04.png) |
-| As a returning site user, I would like to have a liked pets section, so that I can see only the pets I liked already. |
-| As a returning site user, I would like to have a search bar available on the home page, so that I can search a guinea pig by name/age/breed etc. | 
-| As a returning site user, I would like to receive notifications if I enable them, so that I can know every time a person adds a new pet. | 
-| As a returning site user, I would like to have the option to add multiple pictures of my guinea pig when adding one instead of only one. | 
-| As a returning site user, I would like to have a carousel with all the pets, so that I can navigate with arrows and don't have to go all the way down the page to see all of them. | 
+| As a returning site user, I would like to have a liked pets section, so that I can see only the pets I liked already. | future features |
+| As a returning site user, I would like to have a search bar available on the home page, so that I can search a guinea pig by name/age/breed etc. | future features | 
+| As a returning site user, I would like to receive notifications if I enable them, so that I can know every time a person adds a new pet. | future features | 
+| As a returning site user, I would like to have the option to add multiple pictures of my guinea pig when adding one instead of only one. | future features | 
+| As a returning site user, I would like to have a carousel with all the pets, so that I can navigate with arrows and don't have to go all the way down the page to see all of them. | future features | 
 
 
 ## Bugs
@@ -147,6 +147,8 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
     ![screenshot](documentation/bugs/bug03.png)
 
     - To fix this, I have to transform my whole project from Materialize to Bootstrap as Materialize has a bug in the framework so you actually can't have a responsive layout.
+
+    ![screenshot](documentation/bugs/fixed.png)
 
     
 
