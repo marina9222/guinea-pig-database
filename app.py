@@ -184,7 +184,8 @@ def edit_pet(pet_id):
             image_url = upload_result["secure_url"]
             update_data["image_url"] = image_url
 
-        mongo.db.pets.update_one({"_id": ObjectId(pet_id)}, {"$set": update_data})  
+        mongo.db.pets.update_one(
+            {"_id": ObjectId(pet_id)}, {"$set": update_data})
         flash(f"{pet_name} Updated Successfully!")
         return redirect(url_for("edit_pet", pet_id=pet_id))
 

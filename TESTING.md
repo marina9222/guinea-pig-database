@@ -133,7 +133,7 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 
     ![screenshot](documentation/bugs/bug01.png)
 
-    - To fix this, I changed the code line mongo.db.pets.update_one({"_id":ObjectId(pet_id)},submit) to mongo.db.pets.update_one({"_id":ObjectId(pet_id)},{"$set":update_data}).
+    - To fix this, I changed the code line / mongo.db.pets.update_one({"_id":ObjectId(pet_id)},submit) to mongo.db.pets.update_one({"_id":ObjectId(pet_id)},{"$set":update_data}) /.
 
 
 - Python jinja : UndefinedError
@@ -146,7 +146,9 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 
     ![screenshot](documentation/bugs/bug03.png)
 
-    - To fix this, I have to transoform my whole project from Materialize to bootstrap as Materialize has a bug in the framework so you actually can't have a responsive layout.
+    - To fix this, I have to transform my whole project from Materialize to Bootstrap as Materialize has a bug in the framework so you actually can't have a responsive layout.
+
+    
 
 ## Unfixed Bugs
  
