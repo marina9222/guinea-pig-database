@@ -341,6 +341,34 @@ It contains 3 collections:
     | username | String | |
     | password | String | uses Secure Hash Algorithm (SHA) |
 
+```mermaid
+erDiagram
+    breeds {
+        ObjectId _id
+        String pet_breed
+        String info
+        String breed_image
+    }
+    pets {
+        ObjectId _id
+        String pet_name
+        String pet_age
+        String pet_breed
+        String pet_character
+        String image_url
+        String owner
+    }
+    users {
+        ObjectId _id
+        String username
+        String password
+    }
+
+    breeds ||--o{ pets : "pet_breed"
+    users ||--o{ pets : "owner"
+```
+
+https://mermaid.live/edit#pako:eNqVUstugzAQ_BW0Z4KA8PS5l556yK2KhDZ4k9AGGxmjNCX8e21Ik7bkkPpieWc8O-N1D6XkBAxIPVW4U1ivhWPWRhHx1umnk10vmzcq9TN3iorfqiutKrFzGtLFeGWGVGIrZ8WRWlQ17mjChmkzMv_rKbCmu8BV-SGTFin3qLDUpOYRrM-iU4cZIo_im39J0LWkHo9g2fcjYNsepeJX7V9TOZ8XC9lPr8WcNdyCwU8Xf2mTWwAXalI1VtyMfXS6Br0n4wIsi6N6tzqD4WGn5eokSmBadeRC13DUdPkowLZ4aE21QQGshw9gceCleZAlWZokQZgt89iFE7A09qIgDXM_SrM8TJNscOFTSqPge3mQJ36Y-LG_DKIwjEe51xG0PYcvToTLWQ
 
 ## Testing
 
