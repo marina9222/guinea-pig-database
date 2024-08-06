@@ -393,6 +393,23 @@ To obtain your own MongoDB Database URI, sign-up on their site, then follow thes
 - Click **Connect Your Application**.
 - Copy the connection string, and replace `password` with your own password (also remove the angle-brackets).
 
+### Cloudinary API
+
+This project uses the [Cloudinary API](https://cloudinary.com) to store media assets online, due to the fact that Heroku doesn't persist this type of data.
+
+To obtain your own Cloudinary API key, create an account and log in.
+
+- For *Primary interest*, you can choose *Programmable Media for image and video API*.
+- Optional: *edit your assigned cloud name to something more memorable*.
+- On your Cloudinary Dashboard, you can copy your **API Environment Variable**.
+- Be sure to remove the \`CLOUDINARY_URL=\` as part of the API **value**; this is the **key**.
+
+The 3 keys necessary for this particular project are:
+- `CLOUDINARY_NAME`
+- `CLOUDINARY_API_KEY`
+- `CLOUDINARY_API_SECRET`
+
+
 ### Heroku Deployment
 
 This project uses [Heroku](https://www.heroku.com), a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
